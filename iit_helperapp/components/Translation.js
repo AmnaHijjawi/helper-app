@@ -113,7 +113,8 @@ let Strings = {
     name: 'Name',
     email: 'E-mail',
     message: 'Message',
-    send:'Send'
+    send:'Send',
+    EditProfile: 'Edit Profile',
   },
   ar: {
     FontFamily: 'coconnextarabic-light',
@@ -238,6 +239,7 @@ let Strings = {
     message: 'الرسالة',
     send:'ارسال',
 
+    EditProfile: 'تعديل الملف الشخصي',
   }
 };
 
