@@ -22,6 +22,16 @@ export default class MainStyle extends Component {
         textAlign: 'left',
         fontFamily: strings.FontFamily,
       },
+
+      splashScreenStyle: {
+        backgroundColor: '#BB0000',
+        width: width,
+        height: height,
+        alignSelf: 'center',
+        justifyContent: 'center'
+      },
+      
+
     });
 
     return styles;

@@ -210,7 +210,7 @@ export default class SplashScreen extends Component {
     //   var redirectID = 'LogOrSign'
     // }Absence
 
-    var redirectID = 'Home'
+    var redirectID = 'Login'
 
     clearInterval(this.loginInterval);
     // value = await AsyncStorage.getItem('@Helper:noticFlag');
@@ -226,8 +226,11 @@ export default class SplashScreen extends Component {
 
     return (
       <View style={[styles.splashScreenStyle]} >
-     <Text >Helper </Text>
-      </View>
+      <Image style={{ alignSelf: 'center' }}
+
+        source={require('./images/sp.png')}
+      />
+    </View>
 
 
     )

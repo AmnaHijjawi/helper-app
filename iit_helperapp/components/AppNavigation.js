@@ -21,6 +21,8 @@ import MainStyle from './style/mainStyle';
 import Strings from './Translation.js';
 import SplashScreen from './SplashScreen';
 import Home from './Home';
+import Login from './Login';
+import ConfirmationCode from './ConfirmationCode';
 
 import Icon from 'react-native-vector-icons/Entypo';
 import IconMaterial from 'react-native-vector-icons/MaterialIcons';
@@ -30,6 +32,8 @@ import Drawer from 'react-native-circle-drawer'
 import Share, { ShareSheet } from 'react-native-share';
 
 var IS_RTL = I18nManager.isRTL;
+I18nManager.forceRTL(true);
+
 export const { width: width, height: height } = Dimensions.get('window');
 export default class MainNavigator extends Component {
 
@@ -196,7 +200,7 @@ export default class MainNavigator extends Component {
                 title: title,
                 headerLeft: () => <IndexHeaderRight />,
                 headerRight: () => <BackBtn navigation={navigation} />,
-                headerStyle: { elevation: 0, backgroundColor: '#003F6D' },
+                headerStyle: { elevation: 0, backgroundColor: '#BB0000' },
                 headerTitleStyle: {
                     color: '#fff',
                     // fontSize:17
@@ -206,8 +210,20 @@ export default class MainNavigator extends Component {
         };
 
         Home.navigationOptions = (props) => TitleHeader(props, strings.Home);
+        // Login.navigationOptions = (props) => TitleHeader(props, strings.Login);
     
         SplashScreen.navigationOptions = ({ navigation }) => {
+            return {
+                headerShown: false,
+            };
+        };
+      
+        Login.navigationOptions = ({ navigation }) => {
+            return {
+                headerShown: false,
+            };
+        };
+        ConfirmationCode.navigationOptions = ({ navigation }) => {
             return {
                 headerShown: false,
             };
@@ -219,6 +235,8 @@ export default class MainNavigator extends Component {
             {
                 SplashScreen: SplashScreen,
                 Home: Home,
+                Login:Login,
+                ConfirmationCode:ConfirmationCode
           
             },
             {
