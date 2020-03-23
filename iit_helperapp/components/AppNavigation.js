@@ -21,6 +21,7 @@ import MainStyle from './style/mainStyle';
 import Strings from './Translation.js';
 import SplashScreen from './SplashScreen';
 import Home from './Home';
+import EditProfile from './EditProfile';
 
 import Icon from 'react-native-vector-icons/Entypo';
 import IconMaterial from 'react-native-vector-icons/MaterialIcons';
@@ -206,6 +207,7 @@ export default class MainNavigator extends Component {
         };
 
         Home.navigationOptions = (props) => TitleHeader(props, strings.Home);
+        EditProfile.navigationOptions = (props) => TitleHeader(props, strings.EditProfile);
     
         SplashScreen.navigationOptions = ({ navigation }) => {
             return {
@@ -219,6 +221,7 @@ export default class MainNavigator extends Component {
             {
                 SplashScreen: SplashScreen,
                 Home: Home,
+                EditProfile: EditProfile,
           
             },
             {
