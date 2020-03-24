@@ -104,6 +104,10 @@ let Strings = {
     Underway: 'Underway',
     Waiting: 'Waiting',
     ServicesIVolunteered: 'Services I Volunteered',
+    CancelVolunteering: 'Cancel Volunteering',
+    UserName: 'User Name',
+    CancelVolunteerServiceMSG: 'Are you sure you want to cancel the volunteer service?',
+    Cancel: 'Cancel',
     
     TeachersContact: 'Contact The Teacher',
     startChat: 'Start Chat',
@@ -274,6 +278,10 @@ let Strings = {
     Underway: 'قيد التنفيذ',
     Waiting: 'بالإنتظار',
     ServicesIVolunteered: 'خدمات قمت بالتطوع بها',
+    CancelVolunteering: 'الغاء التطوع',
+    UserName: 'اسم المستخدم',
+    CancelVolunteerServiceMSG: 'هل انت متأكد من الغاء التطوع؟',
+    Cancel: 'الغاء',
 
     TeachersContact: 'تواصل مع المعلمين',
     startChat: 'إبدأ المحادثة',

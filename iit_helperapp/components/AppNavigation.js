@@ -167,7 +167,7 @@ export default class MainNavigator extends Component {
                         <Text style={[styles.TextStyle,
                         { color: '#201F1F', fontSize: 17, marginLeft: 10, }]} >{strings.Home}</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ marginTop: height * 0.02, flexDirection: "row" }}>
+                    <TouchableOpacity  onPress={() => { this.returnToPage('EditProfile', {}) }} style={{ marginTop: height * 0.02, flexDirection: "row" }}>
                         <Image source={require('./images/account.png')} />
                         <Text style={[styles.TextStyle,
                         { color: '#201F1F', fontSize: 17, marginLeft: 10, }]} >{strings.MyAccount}</Text>
@@ -210,7 +210,7 @@ export default class MainNavigator extends Component {
 
         Home.navigationOptions = (props) => TitleHeader(props, strings.Home);
         // Login.navigationOptions = (props) => TitleHeader(props, strings.Login);
-        EditProfile.navigationOptions = (props) => TitleHeader(props, strings.EditProfile);
+        EditProfile.navigationOptions = (props) => TitleHeader(props, strings.MyAccount);
         VolunteerForm.navigationOptions = (props) => TitleHeader(props, strings.VolunteerForm);
         ContactUs.navigationOptions = (props) => TitleHeader(props, strings.contactUs);
         PreviousServicesTypeOne.navigationOptions = (props) => TitleHeader(props, strings.PreviousServices);

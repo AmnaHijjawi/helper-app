@@ -30,6 +30,38 @@ export default class MainStyle extends Component {
         height: 35,
         textAlign: 'center',
       },
+      profileBTN: {
+        backgroundColor: '#FFFFFF',
+        borderRadius: 20,
+        width: width * 0.65,
+        height: 35,
+        textAlign: 'center',
+        borderColor: '#BB0000',
+        borderWidth: 1.5
+      },
+      confirmBTN: {
+        backgroundColor: '#BB0000',
+        borderRadius: 20,
+        width: width * 0.65,
+        height: 35,
+        textAlign: 'center',
+      },
+      modalContainer1: {
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
+
+      },
+      modalContainer2: {
+        padding: 20,
+        backgroundColor: '#fff',
+        borderRadius: 20,
+        width: width * 0.88,
+        maxHeight: height * 0.9,
+        alignItems: 'center'
+      },
       splashScreenStyle: {
         backgroundColor: '#BB0000',
         width: width,
