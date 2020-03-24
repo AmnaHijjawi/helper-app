@@ -7,8 +7,8 @@ var _Environments = {
     APP_NAME: 'IIT_HelperApp',
   },
   PRODUCTION: {
-    DOMAIN: 'http://dev53.istanbulit.net/API/',
-    CHAT_DOMAIN: 'http://dev53.istanbulit.net',
+    DOMAIN: 'http://nashmi.istanbulit.net/API/',
+    CHAT_DOMAIN: 'http://nashmi.istanbulit.net',
     PUSH_NOTES_DOMAIN: 'https://www.istanbulit.com',
 
     APP_NAME: 'IIT_HelperApp',
