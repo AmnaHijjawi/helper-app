@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Content, Spinner, Input, Item, Form, Label, Row, Badge, Right } from 'native-base';
 import {
-    StyleSheet, TouchableOpacity, Button, Clipboard,
+    StyleSheet, TouchableOpacity, Button, BackHandler,
     ToastAndroid, TextInput, AlertIOS, Linking, Platform,
     I18nManager, AppRegistry, Dimensions, ScrollView, ImageBackground,
     View, Image, Text, Modal, TouchableHighlight, Alert
@@ -17,15 +17,23 @@ export default class ContactUsSuccessMSG extends Component {
         this.state = {
             page: this.props.navigation.getParam('page', null),
         };
-
+        this.backBtn = this.backBtn.bind(this)
     }
     goToPage(page, param) {
 
         this.props.navigation.navigate(page, param)
     }
     componentDidMount() {
+        this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.backBtn);
     }
-
+    componentWillUnmount() {
+        this.backHandler.remove();
+    }
+    backBtn() {
+        this.backHandler.remove();
+        this.props.navigation.navigate('Home')
+        return true;
+    }
     render() {
         return (
             <Container>

@@ -122,6 +122,7 @@ export default class NeedHelpForm extends Component {
                 if (response.status >= 200 && response.status < 300) {
                     this.setState({ showProgress: false });
                     this.clearData()
+                    this.goToPage('ContactUsSuccessMSG',{ page: 'NeedHelp' })
 
                 } else {
 

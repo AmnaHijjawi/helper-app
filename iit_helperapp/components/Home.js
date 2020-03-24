@@ -18,6 +18,7 @@ export default class SignUp extends Component {
         this.state = {
             isRTL: this.props.isRTL,
             showProgress: true,
+            type:0,
         };
         this.goToPage = this.goToPage.bind(this);
     }
