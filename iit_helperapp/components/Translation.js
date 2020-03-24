@@ -168,6 +168,26 @@ let Strings = {
 
     retry: 'اعادة المحاولة',
     confirm: 'تأكيد',
+    selectServiceType: 'Choose the service area you need help with',
+    serviceDescPlaceholder: 'Discribe the service you need',
+    needHelpFormNote: 'The volunteer group [Nashama] will provide you with free service',
+    firstGrade: 'First Grade',
+    secondGrade: 'Second Grade',
+    thirdGrade: 'Third Grade',
+    fourthGrade: 'Fourth Grade',
+    fifthGrade: 'Fifth Grade',
+    sixthGrade: 'Sixth Grade',
+    seventhGrade: 'Seventh Grade',
+    eighthGrade: 'Eighth Grade',
+    ninthGrade: 'Ninth Grade',
+    tenthGrade: 'Tenth Grade',
+    eleventhGrade: 'Eleventh Grade',
+    tawjihi: 'tawjihi',
+    class: 'Class',
+    cancel : 'Cancel',
+    selectdClassError : 'select class please',
+    sentSuccesfully : 'Sent Succesfully',
+
 
     FontFamily: 'coconnextarabic-light',
     Home: 'الرئيسية',
@@ -303,6 +323,43 @@ let Strings = {
     send: 'ارسال',
 
     EditProfile: 'تعديل الملف الشخصي',
+    
+    volunteerNoteArea: 'اذكر المواد التي ترغب بتدريسها',
+    requiredField: 'هذا الحقل مطلوب',
+    volunteerCheckboxLable: 'أوافق على تقديم الخدمة مجانا',
+    fullName: 'الاسم الرباعي',
+    fullNameError: 'الرجاء ادخال الاسم الرباعي',
+    nationalNumber: 'الرقم الوطني',
+    nationalNumberError: 'الرجاء ادخال الرقم الوطني',
+    selectVolunteerType: 'اختر مجال الخدمة التي ترغب التطوع بها',
+    onlineEducation: 'التعليم عن بعد',
+    otherServices: 'خدمات أخرى',
+    carNum: 'رقم السيارة',
+    volunteerFormNote: 'ملاحظة : نحتاج هذه المعلومات من أجل الحصول على تصريح من الجهات الرسمية',
+    volunteerNote2Area: 'اذكر الخدمات التي ستقدمها',
+    carNumError: 'الرجاء ادخال رقم السيارة',
+
+
+    selectServiceType: 'اختر مجال الخدمة التي تحتاج إلى مساعده بها',
+    serviceDescPlaceholder: 'صف الخدمة التي تريدها',
+    needHelpFormNote: 'سيقوم النشامى المتطوعين بتقديم الخدمة لك مجاناً',
+    firstGrade: 'الصف الأول',
+    secondGrade: 'الصف الثاني',
+    thirdGrade: 'الصف الثالث',
+    fourthGrade: 'الصف الرابع',
+    fifthGrade: 'الصف الخامس',
+    sixthGrade: 'الصف السادس',
+    seventhGrade: 'الصف السابع',
+    eighthGrade: 'الصف الثامن',
+    ninthGrade: 'الصف التاسع',
+    tenthGrade: 'الصف العاشر',
+    eleventhGrade: 'الصف الحادي عشر',
+    tawjihi: 'التوجيهي',
+    class: 'الصف',
+    cancel : 'إلغاء',
+    selectdClassError : 'الرجاء اختار الصف',
+    sentSuccesfully : 'تم الارسال بنجاح'
+
   }
 };
 
