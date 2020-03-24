@@ -230,7 +230,7 @@ export default class MainNavigator extends Component {
         EditProfile.navigationOptions = (props) => TitleHeader(props, strings.MyAccount);
         VolunteerForm.navigationOptions = (props) => TitleHeader(props, strings.VolunteerForm);
         ContactUs.navigationOptions = (props) => TitleHeader(props, strings.contactUs);
-        PreviousServicesTypeOne.navigationOptions = (props) => TitleHeader(props, strings.PreviousServices);
+        PreviousServicesTypeOne.navigationOptions = (props) => TitleHeader(props, strings.PreviousVolunteers);
         PreviousServicesTypeTow.navigationOptions = (props) => TitleHeader(props, strings.PreviousServices);
         Services.navigationOptions = (props) => TitleHeader(props, strings.Services);
         NeedHelpForm.navigationOptions = (props) => TitleHeader(props, strings.NeedHelpForm);
