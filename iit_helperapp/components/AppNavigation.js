@@ -169,7 +169,7 @@ export default class MainNavigator extends Component {
                         <Text style={[styles.TextStyle,
                         { color: '#201F1F', fontSize: 17, marginLeft: 10, }]} >{strings.Home}</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity  onPress={() => { this.returnToPage('EditProfile', {}) }} style={{ marginTop: height * 0.02, flexDirection: "row" }}>
+                    <TouchableOpacity onPress={() => { this.returnToPage('EditProfile', {}) }} style={{ marginTop: height * 0.02, flexDirection: "row" }}>
                         <Image source={require('./images/account.png')} />
                         <Text style={[styles.TextStyle,
                         { color: '#201F1F', fontSize: 17, marginLeft: 10, }]} >{strings.MyAccount}</Text>
@@ -180,9 +180,14 @@ export default class MainNavigator extends Component {
                         { color: '#201F1F', fontSize: 17, marginLeft: 10, }]} >{strings.PreviousServices}</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => { this.returnToPage('PreviousServicesTypeOne', {}) }} style={{ marginTop: height * 0.02, flexDirection: "row" }}>
-                        <IconAwesome5 style={{color:'#D98080',fontSize:20}} name='hand-holding-heart'/>
+                        <IconAwesome5 style={{ color: '#D98080', fontSize: 20 }} name='hand-holding-heart' />
                         <Text style={[styles.TextStyle,
                         { color: '#201F1F', fontSize: 17, marginLeft: 10, }]} >{strings.PreviousVolunteers}</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => { this.returnToPage('Services', {}) }} style={{ marginTop: height * 0.02, flexDirection: "row" }}>
+                        <Image source={require('./images/last.png')} />
+                        <Text style={[styles.TextStyle,
+                        { color: '#201F1F', fontSize: 17, marginLeft: 10, }]} >{strings.Services}</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => { this.returnToPage('ContactUs', {}) }} style={{ marginTop: height * 0.02, flexDirection: "row" }}>
                         <Image source={require('./images/contactUs.png')} />
@@ -270,13 +275,13 @@ export default class MainNavigator extends Component {
                 EditProfile: EditProfile,
                 UserLoc: UserLoc,
                 VolunteerForm: VolunteerForm,
-                Services:Services,
+                Services: Services,
                 UserLoc: UserLoc,
                 ContactUs: ContactUs,
                 ContactUsSuccessMSG: ContactUsSuccessMSG,
                 PreviousServicesTypeOne: PreviousServicesTypeOne,
                 PreviousServicesTypeTow: PreviousServicesTypeTow,
-                NeedHelpForm:NeedHelpForm,
+                NeedHelpForm: NeedHelpForm,
             },
             {
                 initialRouteName: 'SplashScreen',
