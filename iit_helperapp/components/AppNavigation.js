@@ -174,7 +174,11 @@ export default class MainNavigator extends Component {
                         <Text style={[styles.TextStyle,
                         { color: '#201F1F', fontSize: 17, marginLeft: 10, }]} >{strings.MyAccount}</Text>
                     </TouchableOpacity>
-
+                    <TouchableOpacity onPress={() => { this.returnToPage('PreviousServicesTypeTow', {}) }} style={{ marginTop: height * 0.02, flexDirection: "row" }}>
+                        <Image source={require('./images/last.png')} />
+                        <Text style={[styles.TextStyle,
+                        { color: '#201F1F', fontSize: 17, marginLeft: 10, }]} >{strings.PreviousServices}</Text>
+                    </TouchableOpacity>
                     <TouchableOpacity onPress={() => { this.returnToPage('ContactUs', {}) }} style={{ marginTop: height * 0.02, flexDirection: "row" }}>
                         <Image source={require('./images/contactUs.png')} />
                         <Text style={[styles.TextStyle,

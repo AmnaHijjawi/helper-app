@@ -107,6 +107,10 @@ let Strings = {
     CancelVolunteering: 'Cancel Volunteering',
     UserName: 'User Name',
     CancelVolunteerServiceMSG: 'Are you sure you want to cancel the volunteer service?',
+    CancelOrderMSG: 'Are you sure you want to cancel the help order?',
+    ServiceConfirmMSG: 'Did you receive help well?',
+    yes: 'Yes',
+    No: 'No',
     Cancel: 'Cancel',
     
     TeachersContact: 'Contact The Teacher',
@@ -301,6 +305,10 @@ let Strings = {
     CancelVolunteering: 'الغاء التطوع',
     UserName: 'اسم المستخدم',
     CancelVolunteerServiceMSG: 'هل انت متأكد من الغاء التطوع؟',
+    CancelOrderMSG:'هل انت متأكد من الغاء طلب المساعدة؟',
+    ServiceConfirmMSG: 'هل تلقيت المساعدة بشكل جيد؟',
+    yes: 'نعم',
+    no: 'لا',
     Cancel: 'الغاء',
 
     TeachersContact: 'تواصل مع المعلمين',

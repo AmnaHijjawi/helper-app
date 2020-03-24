@@ -13,6 +13,7 @@ export default class EditProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            showProgress: false,
             userId: '232-a91ad7de5901bb8694a5b23ce4a57031',
             name: '',
             phone: '',
@@ -49,6 +50,7 @@ export default class EditProfile extends Component {
     UNSAFE_componentWillMount() {
     }
     async getUsreData() {
+        this.setState({ showProgress: true});
         try {
             let response = await fetch(config.DOMAIN + 'getData.php', {
                 method: 'POST',
@@ -58,6 +60,7 @@ export default class EditProfile extends Component {
                 })
             });
             let res = await response.json();
+            this.setState({ showProgress: false });
             let userData = res.result;
             if (userData.features == 1 || userData.features == 2) {
                 this.setState({
@@ -97,9 +100,17 @@ export default class EditProfile extends Component {
             modal: true,
         })
     }
+    renderLoading() {
+        if (this.state.showProgress) {
+            return (
+                <Spinner color='#ff9619' style={styles.loader} />
+            );
+        }
+    }
     render() {
         return (
             <Container style={{ backgroundColor: '#F8F8F8' }}>
+                {this.renderLoading()}
                 <Modal
                     animationType="fade"
                     transparent={true}
@@ -156,7 +167,7 @@ export default class EditProfile extends Component {
                                 {this.state.phone}
                             </Text>
                         </View>
-                        {(this.state.userData.features == 1 || this.state.userData.features == 2) &&
+                        {this.state.userData.features == 1 &&
                             <View style={{ flexDirection: 'row', justifyContent: 'flex-start', marginTop: '3%' }}>
                                 <Text style={[styles.TextStyle, { color: '#545252', fontSize: 16, marginHorizontal: '5%' }]}>
                                     {strings.nationalNumber}
@@ -166,7 +177,7 @@ export default class EditProfile extends Component {
                                 </Text>
                             </View>
                         }
-                        {(this.state.userData.features == 1 || this.state.userData.features == 2) &&
+                        {this.state.userData.features == 1 &&
                             <View style={{ flexDirection: 'row', justifyContent: 'flex-start', marginTop: '3%' }}>
                                 <Text style={[styles.TextStyle, { color: '#545252', fontSize: 16, marginHorizontal: '5%' }]}>
                                     {strings.carNum}
