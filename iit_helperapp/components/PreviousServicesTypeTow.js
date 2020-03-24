@@ -16,7 +16,7 @@ export default class PreviousServicesTypeTow extends Component {
             isRTL: this.props.isRTL,
             showProgress: false,
             showHide: true,
-            userId: '232-a91ad7de5901bb8694a5b23ce4a57031',
+            userId: '',
             waitingModal: false,
             underwayModal: false,
             fieldId: '',
@@ -29,6 +29,8 @@ export default class PreviousServicesTypeTow extends Component {
     async componentWillMount() {
     }
     async editUserData(status) {
+        var theId = await AsyncStorage.getItem('@Helper:userId');
+
         if (status == 'UnderWay') {
             console.log(this.state.fieldId, 'ss');
 
@@ -37,7 +39,7 @@ export default class PreviousServicesTypeTow extends Component {
                     method: 'POST',
                     body: JSON.stringify({
                         'type': 'serviceDone',
-                        'userId': this.state.userId,
+                        'userId': theId,
                         'serviceId': this.state.fieldId,
                     })
                 });
@@ -55,7 +57,7 @@ export default class PreviousServicesTypeTow extends Component {
                     method: 'POST',
                     body: JSON.stringify({
                         'type': 'cancelService',
-                        'userId': this.state.userId,
+                        'userId': theId,
                         'serviceId': this.state.fieldId,
                     })
                 });
@@ -70,13 +72,15 @@ export default class PreviousServicesTypeTow extends Component {
 
     }
     async getUsreData() {
+        var theId = await AsyncStorage.getItem('@Helper:userId');
+
         this.setState({ showProgress: true });
         try {
             let response = await fetch(config.DOMAIN + 'getData.php', {
                 method: 'POST',
                 body: JSON.stringify({
                     'type': 'getUserService',
-                    'userId': this.state.userId,
+                    'userId': theId,
                 })
             });
             let res = await response.json();

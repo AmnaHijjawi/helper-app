@@ -77,6 +77,8 @@ export default class UserLoc extends Component {
                         latitudeDelta: LATITUDE_DELTA,
                         longitudeDelta: LONGITUDE_DELTA,
                     }
+                }, () => {
+                    this.getData()
                 })
 
             },
@@ -93,82 +95,114 @@ export default class UserLoc extends Component {
             }
         );
     }
-   
+
 
     componentDidMount() {
         this.checkLoc()
+
     }
-async confirm(){
-    fetch("https://maps.googleapis.com/maps/api/geocode/json?language=ar&latlng=" + this.state.location.latitude + "," +  this.state.location.longitude + "&key=AIzaSyDS3zDY54x0LOmE-CqTpigigRac6s0FnUw")
-    // https://maps.googleapis.com/maps/api/geocode/json?latlng=21.543656,39.201650&key=AIzaSyAv73ZPwjhkG-Z7bWpue9YCz57sXrFWMMo&language=ar
-    .then((response) => response.json())
-    .then(async (responseJson) => {
-        console.log((responseJson.results));
-        if (responseJson.results.length > 0) {
-            var foundLocality
-            var localityValue
-            var foundSubLocality
-            var subLocalityValue
-            var foundneighbor
-            var neighborValue
-            // if (responseJson.results[0].formatted_address) {
-            responseJson.results.map( async function (item1) {
+    async getData() {
+        fetch("https://maps.googleapis.com/maps/api/geocode/json?language=ar&latlng=" + this.state.location.latitude + "," + this.state.location.longitude + "&key=AIzaSyDS3zDY54x0LOmE-CqTpigigRac6s0FnUw")
+            // https://maps.googleapis.com/maps/api/geocode/json?latlng=21.543656,39.201650&key=AIzaSyAv73ZPwjhkG-Z7bWpue9YCz57sXrFWMMo&language=ar
+            .then((response) => response.json())
+            .then(async (responseJson) => {
+                console.log((responseJson.results));
+                if (responseJson.results.length > 0) {
+                    var foundLocality
+                    var localityValue
+                    var foundSubLocality
+                    var subLocalityValue
+                    var foundneighbor
+                    var neighborValue
+                    // if (responseJson.results[0].formatted_address) {
+                    responseJson.results.map(async function (item1) {
 
-                item1.address_components.map(async function (item) {
-                    foundLocality = item.types.find(element => element == "locality");
-                    foundSubLocality = item.types.find(element => element == "sublocality");
-                    foundneighbor = item.types.find(element => element == "neighborhood");
+                        item1.address_components.map(async function (item) {
+                            foundLocality = item.types.find(element => element == "locality");
+                            foundSubLocality = item.types.find(element => element == "sublocality");
+                            foundneighbor = item.types.find(element => element == "neighborhood");
 
-                    if (foundLocality != undefined && localityValue != '') {
-                        localityValue = item.long_name
-                    }
-                    if (foundSubLocality != undefined && subLocalityValue != '') {
-                        subLocalityValue = item.long_name
-                    }
-                    if (foundneighbor != undefined && neighborValue != '') {
-                        neighborValue = item.long_name
-                    }
-                })
-            })
-            // alert(localityValue)
-            // setLocality(localityValue)
-            // setSubLocality(subLocalityValue)
-            console.warn(localityValue + ' , ' + subLocalityValue + ' , ' + neighborValue)
-            if (subLocalityValue == undefined) {
-                subLocalityValue = neighborValue
-                responseJson.results[0].formatted_address = responseJson.results[0].formatted_address + ' ,' + neighborValue
-
-            }
-            // setStreetName(responseJson.results[0].formatted_address)
-
-            // locCheck(localityValue, subLocalityValue)
-            var theId = await AsyncStorage.getItem('@Helper:userId');
-
-            try {
-                let response = await fetch(config.DOMAIN + 'getData.php', {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        type: 'editUserLocation',
-                        userId: theId,
-                        lat: this.state.location.latitude,
-                        lon: this.state.location.longitude,
-                        locality :localityValue,
-                        sublocality :subLocalityValue,
-                        fullAddress:responseJson.results[0].formatted_address
+                            if (foundLocality != undefined && localityValue != '') {
+                                localityValue = item.long_name
+                            }
+                            if (foundSubLocality != undefined && subLocalityValue != '') {
+                                subLocalityValue = item.long_name
+                            }
+                            if (foundneighbor != undefined && neighborValue != '') {
+                                neighborValue = item.long_name
+                            }
+                        })
                     })
-                });
-        
-                let res = await response.json();
-                this.redirectPage()
-        
-            } catch (error) {
-                this.setState({ error: error });
-            }
+                    // alert(localityValue)
+                    // setLocality(localityValue)
+                    // setSubLocality(subLocalityValue)
+                    console.warn(localityValue + ' , ' + subLocalityValue + ' , ' + neighborValue)
+                    if (subLocalityValue == undefined) {
+                        subLocalityValue = neighborValue
+                        responseJson.results[0].formatted_address = responseJson.results[0].formatted_address + ' ,' + neighborValue
 
+                    }
+                    this.setState({
+
+                        fullAddress: responseJson.results[0].formatted_address,
+                        locality: localityValue,
+                        sublocality: subLocalityValue
+                    })
+                    // // setStreetName(responseJson.results[0].formatted_address)
+
+                    // // locCheck(localityValue, subLocalityValue)
+                    // var theId = await AsyncStorage.getItem('@Helper:userId');
+
+                    // try {
+                    //     let response = await fetch(config.DOMAIN + 'getData.php', {
+                    //         method: 'POST',
+                    //         body: JSON.stringify({
+                    //             type: 'editUserLocation',
+                    //             userId: theId,
+                    //             lat: this.state.location.latitude,
+                    //             lon: this.state.location.longitude,
+                    //             locality: localityValue,
+                    //             sublocality: subLocalityValue,
+                    //             fullAddress: responseJson.results[0].formatted_address
+                    //         })
+                    //     });
+
+                    //     let res = await response.json();
+                    //     this.redirectPage()
+
+                    // } catch (error) {
+                    //     this.setState({ error: error });
+                    // }
+
+                }
+            })
+
+    }
+
+    async confirm() {
+        var theId = await AsyncStorage.getItem('@Helper:userId');
+
+        try {
+            let response = await fetch(config.DOMAIN + 'getData.php', {
+                method: 'POST',
+                body: JSON.stringify({
+                    type: 'editUserLocation',
+                    userId: theId,
+                    lat: this.state.location.latitude,
+                    lon: this.state.location.longitude,
+                    locality: this.state.locality,
+                    sublocality: this.state.sublocality,
+                    fullAddress: this.state.fullAddress
+                })
+            });
+
+            let res = await response.json();
+            this.redirectPage()
+
+        } catch (error) {
+            this.setState({ error: error });
         }
-    })
-  
-}
+    }
     render() {
         return (
             <Container>
@@ -188,12 +222,15 @@ async confirm(){
 
 
                     </View>}
-                    <TouchableOpacity style={[styles.TextStyle, { width: width * 0.5, alignSelf: "center", borderRadius: 20, margin: height * 0.01, backgroundColor: '#BB0000', flexDirection: "row", justifyContent: 'center' }]} 
-                    onPress={() =>this.state.error? this.checkLoc() :  this.confirm()}>
-                    {this.state.error ? <Text style={[styles.TextStyle, { color: '#FFFFFF', fontSize: 19, alignItems: 'center', lineHeight: 32 }]}>{strings.retry}</Text>
-                    :  <Text style={[styles.TextStyle, { color: '#FFFFFF', fontSize: 19, alignItems: 'center', lineHeight: 32 }]}>{strings.confirm}</Text>
-    }  
-                    {/* <IconMaterial style={{ color: '#FFFFFF', fontSize: 19, alignItems: 'center', lineHeight: 32, paddingHorizontal: 7 }} name={backBtn} size={23} /> */}
+                    <Text style={[styles.TextStyle, { textAlign: "center", fontSize: 19, color: '#636363' }]}>
+                        {this.state.fullAddress}
+                    </Text>
+                    <TouchableOpacity style={[styles.TextStyle, { width: width * 0.5, alignSelf: "center", borderRadius: 20, margin: height * 0.01, backgroundColor: '#BB0000', flexDirection: "row", justifyContent: 'center' }]}
+                        onPress={() => this.state.error ? this.checkLoc() : this.confirm()}>
+                        {this.state.error ? <Text style={[styles.TextStyle, { color: '#FFFFFF', fontSize: 19, alignItems: 'center', lineHeight: 32 }]}>{strings.retry}</Text>
+                            : <Text style={[styles.TextStyle, { color: '#FFFFFF', fontSize: 19, alignItems: 'center', lineHeight: 32 }]}>{strings.confirm}</Text>
+                        }
+                        {/* <IconMaterial style={{ color: '#FFFFFF', fontSize: 19, alignItems: 'center', lineHeight: 32, paddingHorizontal: 7 }} name={backBtn} size={23} /> */}
                     </TouchableOpacity>
                     <View style={[styles.brancheBox]}>
 

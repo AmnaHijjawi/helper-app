@@ -67,7 +67,7 @@ export default class MainNavigator extends Component {
 
         let shareOptions = {
             title: 'Helper',
-            url: 'app link ',
+            url: this.link,
             subject: '',
             message: '',
         };
@@ -78,9 +78,31 @@ export default class MainNavigator extends Component {
 
     }
 
+    async getData() {
+        var theId = await AsyncStorage.getItem('@Helper:userId');
 
+        try {
+            let response = await fetch(config.DOMAIN + 'getData.php', {
+                method: 'POST',
+                body: JSON.stringify({
+                    type: 'getAPPsLinks',
+                })
+            });
+
+            let res = await response.json();
+            if (Platform.OS == 'android') {
+                this.link = res.result.android
+            } else {
+                this.link = res.result.ios
+            }
+        } catch (error) {
+            this.setState({ error: error });
+        }
+
+    }
     async componentDidMount() {
         this.userId = null
+        this.getData()
     }
 
     onBackPress = () => {
@@ -137,14 +159,21 @@ export default class MainNavigator extends Component {
         styles = MainStyle.returnStyles(IS_RTL);
 
         RTL = IS_RTL
-        const BackBtn = ({ navigation }) => {
-            return (
-                <TouchableOpacity style={{ margin: 10 }}>
-                    <IconMaterial
-                        name={backBtn} color={'#fff'} size={25} onPress={() => this.backNav(navigation)}
-                    />
-                </TouchableOpacity>
-            )
+        const BackBtn = ({ navigation, home }) => {
+
+
+
+            if (home != 1) {
+                return (
+                    <TouchableOpacity style={{ margin: 10 }}>
+                        <IconMaterial
+                            name={backBtn} color={'#fff'} size={25} onPress={() => this.backNav(navigation)}
+                        />
+                    </TouchableOpacity>
+                )
+            } else {
+                return <View />
+            }
         }
 
 
@@ -169,7 +198,7 @@ export default class MainNavigator extends Component {
                         <Text style={[styles.TextStyle,
                         { color: '#201F1F', fontSize: 17, marginLeft: 10, }]} >{strings.Home}</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity  onPress={() => { this.returnToPage('EditProfile', {}) }} style={{ marginTop: height * 0.02, flexDirection: "row" }}>
+                    <TouchableOpacity onPress={() => { this.returnToPage('EditProfile', {}) }} style={{ marginTop: height * 0.02, flexDirection: "row" }}>
                         <Image source={require('./images/account.png')} />
                         <Text style={[styles.TextStyle,
                         { color: '#201F1F', fontSize: 17, marginLeft: 10, }]} >{strings.MyAccount}</Text>
@@ -200,7 +229,7 @@ export default class MainNavigator extends Component {
 
         );
 
-        let TitleHeader = (props, title) => {
+        let TitleHeader = (props, title, home) => {
             const { navigation } = props;
             const { state, setParams } = navigation;
             const { params } = state;
@@ -209,7 +238,7 @@ export default class MainNavigator extends Component {
             return {
                 title: title,
                 headerLeft: () => <IndexHeaderRight />,
-                headerRight: () => <BackBtn navigation={navigation} />,
+                headerRight: () => <BackBtn navigation={navigation} home={home} />,
                 headerStyle: { elevation: 0, backgroundColor: '#BB0000' },
                 headerTitleStyle: {
                     color: '#fff',
@@ -220,7 +249,7 @@ export default class MainNavigator extends Component {
             }
         };
 
-        Home.navigationOptions = (props) => TitleHeader(props, strings.Home);
+        Home.navigationOptions = (props) => TitleHeader(props, strings.Home, 1);
         // Login.navigationOptions = (props) => TitleHeader(props, strings.Login);
         EditProfile.navigationOptions = (props) => TitleHeader(props, strings.MyAccount);
         VolunteerForm.navigationOptions = (props) => TitleHeader(props, strings.VolunteerForm);
@@ -270,13 +299,13 @@ export default class MainNavigator extends Component {
                 EditProfile: EditProfile,
                 UserLoc: UserLoc,
                 VolunteerForm: VolunteerForm,
-                Services:Services,
+                Services: Services,
                 UserLoc: UserLoc,
                 ContactUs: ContactUs,
                 ContactUsSuccessMSG: ContactUsSuccessMSG,
                 PreviousServicesTypeOne: PreviousServicesTypeOne,
                 PreviousServicesTypeTow: PreviousServicesTypeTow,
-                NeedHelpForm:NeedHelpForm,
+                NeedHelpForm: NeedHelpForm,
             },
             {
                 initialRouteName: 'SplashScreen',

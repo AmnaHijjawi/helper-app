@@ -173,9 +173,13 @@ let Strings = {
     cancel : 'Cancel',
     selectdClassError : 'select class please',
     sentSuccesfully : 'Sent Succesfully',
-    helpNow : 'Help Now'
+    helpNow : 'Help Now',
+    serviceDescEduPlaceholder : 'select the subjects you need help on it',
+    NeedHelpForm:"I need help",
   },
   ar: {
+    NeedHelpForm:"احتاج الى مساعده",
+    serviceDescEduPlaceholder : 'حدد المواد التي تحتاج إلى مساعده بها',
     Services:'خدمات قريبه منك',
     VolunteerForm: 'أرغب بالتطوع',
     helpNow : 'المساعدة الآن',
@@ -323,7 +327,7 @@ let Strings = {
     startChat: 'إبدأ المحادثة',
     MyAccount: 'حسابي',
     Notification: 'الاشعارات',
-    contactUs: 'تواصل بنا',
+    contactUs: 'اتصل بنا',
     lang: 'English',
     share: 'شارك التطبيق',
     download: 'تنزيل',
@@ -357,7 +361,7 @@ let Strings = {
 
 
     selectServiceType: 'اختر مجال الخدمة التي تحتاج إلى مساعده بها',
-    serviceDescPlaceholder: 'صف الخدمة التي تريدها',
+    serviceDescPlaceholder: 'وصف الخدمة التي تريدها',
     needHelpFormNote: 'سيقوم النشامى المتطوعين بتقديم الخدمة لك مجاناً',
     firstGrade: 'الصف الأول',
     secondGrade: 'الصف الثاني',

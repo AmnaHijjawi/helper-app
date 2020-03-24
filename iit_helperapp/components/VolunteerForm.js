@@ -106,6 +106,7 @@ export default class VolunteerForm extends Component {
             this.setState({ showProgress: true, suceessFlag: 0 });
 
             const userId = await AsyncStorage.getItem('@Helper:userId');
+            const name = await AsyncStorage.getItem('@Helper:name');
             let platNo = this.state.carNum2 + '-' + this.state.carNum1
 
             try {
@@ -114,7 +115,7 @@ export default class VolunteerForm extends Component {
                     body: JSON.stringify({
                         type: 'editUser',
                         userId: userId,
-                        name: this.state.fullName,
+                        name: this.state.fullName?this.state.fullName:name,
                         nationalId: this.state.nationalNumber,
                         platNo: platNo,
                         serviceType: this.state.volunteerType,

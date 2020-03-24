@@ -71,31 +71,29 @@ export default class NeedHelpForm extends Component {
 
 
         this.setState({
-            helpTypeError: helpTypeError
+            helpTypeError: helpTypeError,
+            serviceDescError: serviceDescError
         })
 
         let selectdClassError = ''
         if ((this.state.selectdClass == 'null' || this.state.selectdClass == undefined || this.state.selectdClass == '') && this.state.helpType == 1) {
             selectdClassError = strings.selectdClassError
-        }else{
+        } else {
             selectdClassError = false
         }
 
         if (this.state.helpType == 1) {
-            serviceDescError = false
             this.setState({
-                selectdClassError: selectdClassError,
-                serviceDescError: ''
+                selectdClassError: selectdClassError
             })
         } else if (this.state.helpType == 2) {
             this.setState({
-                serviceDescError: serviceDescError,
                 selectdClassError: ''
             })
             selectdClassError = false
         }
 
-        
+
 
 
         if (!helpTypeError && !serviceDescError && !selectdClassError) {
@@ -124,7 +122,6 @@ export default class NeedHelpForm extends Component {
                 if (response.status >= 200 && response.status < 300) {
                     this.setState({ showProgress: false });
                     this.clearData()
-                    this.goToPage('ContactUsSuccessMSG',{ page: 'NeedHelp' })
 
                 } else {
 
@@ -232,21 +229,20 @@ export default class NeedHelpForm extends Component {
                     }
 
 
-                    {this.state.helpType == 2 &&
+                    {/* {this.state.helpType == 2 && */}
                         <View>
                             <Textarea style={[styles.TextStyle, styles.volunteerTextAreaInput]}
                                 rowSpan={6}
                                 bordered
                                 returnKeyType={"next"}
-                                placeholder={strings.serviceDescPlaceholder}
-                                value={this.state.serviceDesc}
+                                placeholder={(this.state.helpType == 1) ? strings.serviceDescEduPlaceholder : ((this.state.helpType == 2) ? strings.serviceDescPlaceholder : '')}                                value={this.state.serviceDesc}
                                 onChangeText={(text) => this.setState({ serviceDesc: text })}
                                 blurOnSubmit={false}
                                 onBlur={() => { this.setState({ serviceDescError: validate('volunteerNote', this.state.serviceDesc, this.state.isRTL) }); }} />
 
                             {renderError(this.props.isRTL, this.state.serviceDescError)}
                         </View>
-                    }
+                    {/* } */}
 
 
 

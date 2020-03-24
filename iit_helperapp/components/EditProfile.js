@@ -14,7 +14,7 @@ export default class EditProfile extends Component {
         super(props);
         this.state = {
             showProgress: false,
-            userId: '232-a91ad7de5901bb8694a5b23ce4a57031',
+            userId: '',
             name: '',
             phone: '',
             nationalId: '',//null
@@ -26,12 +26,14 @@ export default class EditProfile extends Component {
         };
     }
     async editUserData() {
+        var theId = await AsyncStorage.getItem('@Helper:userId');
+
         try {
             let response = await fetch(config.DOMAIN + 'getData.php', {
                 method: 'POST',
                 body: JSON.stringify({
                     'type': 'editUser',
-                    'userId': this.state.userId,
+                    'userId': theId,
                     'name': this.state.name,
                     'nationalId': '',
                     'platNo': '',
@@ -50,13 +52,15 @@ export default class EditProfile extends Component {
     UNSAFE_componentWillMount() {
     }
     async getUsreData() {
+        var theId = await AsyncStorage.getItem('@Helper:userId');
+
         this.setState({ showProgress: true});
         try {
             let response = await fetch(config.DOMAIN + 'getData.php', {
                 method: 'POST',
                 body: JSON.stringify({
                     'type': 'getUserInfo',
-                    'userId': this.state.userId,
+                    'userId':theId,
                 })
             });
             let res = await response.json();
