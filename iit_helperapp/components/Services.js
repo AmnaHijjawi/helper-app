@@ -21,6 +21,8 @@ export default class Services extends Component {
         this.state = {
             modal: false,
             viewMode: 1,
+            latitude: 32.024584,
+            longitude: 35.858844,
             viewModalUserData: 0,
             select: {
                 lat: 32.024584,
@@ -32,43 +34,73 @@ export default class Services extends Component {
                 description: 'مكة المكرمة - حي البحيرات (شارع الشهداء)مكة المكرمة - حي البحيرات (شارع الشهداء)مكة المكرمة - حي البحيرات (شارع الشهداء)مكة المكرمة - حي البحيرات (شارع الشهداء)مكة المكرمة - حي البحيرات (شارع الشهداء)مكة المكرمة - حي البحيرات (شارع الشهداء)مكة المكرمة - حي البحيرات (شارع الشهداء)مكة المكرمة - حي البحيرات (شارع الشهداء)مكة المكرمة - حي البحيرات (شارع الشهداء) ',
             },
             data: [
-                {
-                    id: 3,
-                    type: 2,
-                    lat: 32.024584,
-                    lon: 35.858844,
-                    name: 'عماره رقم 1',
-                    creation_date: '24/3',
-                    fname: 'fathi',
-                    phone: '0999099',
-                    description: 'مكة المكرمة - حي البحيرات (شارع الشهداء)مكة المكرمة - حي البحيرات (شارع الشهداء)مكة المكرمة - حي البحيرات (شارع الشهداء)مكة المكرمة - حي البحيرات (شارع الشهداء)مكة المكرمة - حي البحيرات (شارع الشهداء)مكة المكرمة - حي البحيرات (شارع الشهداء)مكة المكرمة - حي البحيرات (شارع الشهداء)مكة المكرمة - حي البحيرات (شارع الشهداء)مكة المكرمة - حي البحيرات (شارع الشهداء) ',
-                },
-                {
-                    id: 3,
-                    type: 2,
-                    lat: 32.019481,
-                    lon: 35.863050,
-                    name: 'عماره رقم 2',
-                    creation_date: '24/3',
-                    fname: 'fathi',
-                    phone: '0999099',
-                    description: 'مكة المكرمة - حي البحيرات (شارع الشهداء) ',
-                },
-                {
-                    id: 3,
-                    type: 2,
-                    lat: 32.022701,
-                    lon: 35.862245,
-                    fname: 'fathi',
-                    phone: '0999099',
-                    name: 'عماره رقم 4',
-                    creation_date: '24/3',
-                    description: 'مكة المكرمة - حي البحيرات (شارع الشهداء) ',
-                },
+                // {
+                //     id: 3,
+                //     type: 2,
+                //     lat: 32.024584,
+                //     lon: 35.858844,
+                //     name: 'عماره رقم 1',
+                //     creation_date: '24/3',
+                //     fname: 'fathi',
+                //     phone: '0999099',
+                //     description: 'مكة المكرمة - حي البحيرات (شارع الشهداء)مكة المكرمة - حي البحيرات (شارع الشهداء)مكة المكرمة - حي البحيرات (شارع الشهداء)مكة المكرمة - حي البحيرات (شارع الشهداء)مكة المكرمة - حي البحيرات (شارع الشهداء)مكة المكرمة - حي البحيرات (شارع الشهداء)مكة المكرمة - حي البحيرات (شارع الشهداء)مكة المكرمة - حي البحيرات (شارع الشهداء)مكة المكرمة - حي البحيرات (شارع الشهداء) ',
+                // },
+                // {
+                //     id: 3,
+                //     type: 2,
+                //     lat: 32.019481,
+                //     lon: 35.863050,
+                //     name: 'عماره رقم 2',
+                //     creation_date: '24/3',
+                //     fname: 'fathi',
+                //     phone: '0999099',
+                //     description: 'مكة المكرمة - حي البحيرات (شارع الشهداء) ',
+                // },
+                // {
+                //     id: 3,
+                //     type: 2,
+                //     lat: 32.022701,
+                //     lon: 35.862245,
+                //     fname: 'fathi',
+                //     phone: '0999099',
+                //     name: 'عماره رقم 4',
+                //     creation_date: '24/3',
+                //     description: 'مكة المكرمة - حي البحيرات (شارع الشهداء) ',
+                // },
             ],
         };
         this.openCloseModal = this.openCloseModal.bind(this)
     }
+    async  checkLoc(num, val) {
+        Geolocation.getCurrentPosition(
+            //Will give you the current location
+            (position) => {
+                const currentLongitude = position.coords.longitude;
+                //getting the Longitude from the location json
+                const currentLatitude = position.coords.latitude;
+                //getting the Latitude from the location json
+                this.setState({
+                    error: false,
+                    latitude: parseFloat(currentLatitude),
+                    longitude: parseFloat(currentLongitude),
+
+                })
+
+            },
+            (error) => {
+                // alert(error.message)
+
+                if (error.code == 2) {
+                    this.setState({ error: true })
+                }
+            }
+            ,
+            {
+                enableHighAccuracy: false, timeout: 20000,
+            }
+        );
+    }
+
 
 
     async getData() {
@@ -97,7 +129,7 @@ export default class Services extends Component {
 
 
     UNSAFE_componentWillMount() {
-        // this.getData()
+        this.getData()
 
     }
 
@@ -133,7 +165,7 @@ export default class Services extends Component {
 
             if (response.status >= 200 && response.status < 300) {
                 this.setState({ viewModalUserData: 1 })
-                // this.getData()
+                this.getData()
 
             } else {
 
@@ -168,6 +200,9 @@ export default class Services extends Component {
                     </View>
                 </TouchableOpacity>
             })
+        } else {
+            listComponent = <Text style={[styles.TextStyle, {textAlign:'center', color: '#1B1919', fontSize: 22, marginTop: height * 0.3 }]}>{'لا يوجد خدمات قريبة منك حاليا '}</Text>
+
         }
 
         var component
@@ -190,7 +225,7 @@ export default class Services extends Component {
         }
         return (
             <Container>
-                <View style={{ flexDirection: 'row', marginTop: height * 0.02, marginBottom: height * 0.02, paddingLeft: 10 }}>
+                <View style={{ flexDirection: 'row', marginTop: height * 0.01, marginBottom: height * 0.01, paddingLeft: 10 }}>
                     <TouchableOpacity onPress={() => this.changeViewMode(1)}>
                         <MapIcon style={[(this.state.viewMode == 1) ? { color: '#BB0000' } : { color: 'gray' }, { fontSize: 25, alignItems: 'center', lineHeight: 32, paddingHorizontal: 7 }]}
                             name={'map-marked-alt'} size={23} />
@@ -210,8 +245,8 @@ export default class Services extends Component {
                                 position: "absolute", height: height, top: 0, bottom: 0, left: 0, right: 0,
                             }}
                             initialRegion={{
-                                latitude: this.state.data[0].lat,
-                                longitude: this.state.data[0].lon,
+                                latitude: this.state.latitude,
+                                longitude: this.state.longitude,
                                 latitudeDelta: 0.0922,
                                 longitudeDelta: 0.0421,
                             }}
@@ -245,7 +280,7 @@ export default class Services extends Component {
                         <View style={[styles.modalContainer2]}>
                             <TouchableOpacity onPress={() => {
                                 this.openCloseModal('')
-                            }} style={{ position: "absolute",padding:10, left: 0, top: -20 }}>
+                            }} style={{ position: "absolute", padding: 10, left: 0, top: -20 }}>
                                 <Icon style={{ backgroundColor: "#fff", borderRadius: 40 }} name='closecircle' size={33} color='#BB0000' />
                             </TouchableOpacity>
 

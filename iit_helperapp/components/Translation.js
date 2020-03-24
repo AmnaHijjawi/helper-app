@@ -116,6 +116,7 @@ let Strings = {
     YourRequestHasBeenSent: 'Your Request Has Been Sent',
     YouWillBeAssistedByAlNashama: 'You Will Be Assisted By Al-Nashama',
     
+    Services:'Services close to you',
     TeachersContact: 'Contact The Teacher',
     startChat: 'Start Chat',
     MyAccount: 'My Account',
@@ -175,6 +176,7 @@ let Strings = {
     helpNow : 'Help Now'
   },
   ar: {
+    Services:'خدمات قريبه منك',
     VolunteerForm: 'أرغب بالتطوع',
     helpNow : 'المساعدة الآن',
     volunteerNoteArea: 'اذكر المواد التي ترغب بتدريسها',
