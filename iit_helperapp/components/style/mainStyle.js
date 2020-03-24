@@ -23,6 +23,13 @@ export default class MainStyle extends Component {
         fontFamily: strings.FontFamily,
       },
 
+      loginBTN: {
+        backgroundColor: '#BB0000',
+        borderRadius: 20,
+        width: width * 0.65,
+        height: 35,
+        textAlign: 'center',
+      },
       splashScreenStyle: {
         backgroundColor: '#BB0000',
         width: width,

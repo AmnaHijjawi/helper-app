@@ -96,7 +96,9 @@ let Strings = {
     firstMonth: 'First Month',
     secondMonth: "Second Month",
     final: "Final",
-
+    YourMessageHasBeenSent: 'Your Message Sas Been Sent',
+    ContactUsMSGDescription: 'Your Message Will Be Reviewed Immediately And We Will Contact You When Needed',
+    
     TeachersContact: 'Contact The Teacher',
     startChat: 'Start Chat',
     MyAccount: 'My Account',
@@ -133,6 +135,8 @@ let Strings = {
     volunteerNote2Area: 'Write the service you will provide',
     carNumError: 'please enter car number',
     VolunteerForm: 'I want to volunteer',
+    retry: 'Retry'
+
   },
   ar: {
     VolunteerForm: 'أرغب بالتطوع',
@@ -151,6 +155,7 @@ let Strings = {
     volunteerFormNote: 'ملاحظة : نحتاج هذه المعلومات من أجل الحصول على تصريح من الجهات الرسمية',
     volunteerNote2Area: 'اذكر الخدمات التي ستقدمها',
     carNumError: 'الرجاء ادخال رقم السيارة',
+
     retry: 'اعادة المحاولة',
     confirm: 'تأكيد',
 
@@ -255,7 +260,8 @@ let Strings = {
     firstMonth: 'الشهر الأول',
     secondMonth: "الشهر الثاني",
     final: "نهائي",
-
+    YourMessageHasBeenSent: 'تم ارسال رسالتك',
+    ContactUsMSGDescription: 'سيتم مراجعة رسالتك في الحال و التواصل بك عند الحاجة',
 
     TeachersContact: 'تواصل مع المعلمين',
     startChat: 'إبدأ المحادثة',
