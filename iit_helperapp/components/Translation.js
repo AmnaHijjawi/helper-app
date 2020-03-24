@@ -103,6 +103,7 @@ let Strings = {
     HelpWasDone: 'Help Was Done',
     Underway: 'Underway',
     Waiting: 'Waiting',
+    ServicesIVolunteered: 'Services I Volunteered',
     
     TeachersContact: 'Contact The Teacher',
     startChat: 'Start Chat',
@@ -272,6 +273,7 @@ let Strings = {
     HelpWasDone: 'تمت المساعدة',
     Underway: 'قيد التنفيذ',
     Waiting: 'بالإنتظار',
+    ServicesIVolunteered: 'خدمات قمت بالتطوع بها',
 
     TeachersContact: 'تواصل مع المعلمين',
     startChat: 'إبدأ المحادثة',

@@ -58,7 +58,7 @@ export default class UserLoc extends Component {
 
     }
     redirectPage() {
-        var redirectID = 'PreviousServicesTypeTow'
+        var redirectID = 'Home'
         this.props.navigation.navigate(redirectID, {});
     }
     async  checkLoc(num, val) {

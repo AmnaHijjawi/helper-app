@@ -28,7 +28,7 @@ import UserLoc from './UserLoc';
 import VolunteerForm from './VolunteerForm';
 import ContactUs from './ContactUs';
 import ContactUsSuccessMSG from './ContactUsSuccessMSG';
-// import PreviousServicesTypeOne from './PreviousServicesTypeOne';
+import PreviousServicesTypeOne from './PreviousServicesTypeOne';
 import PreviousServicesTypeTow from './PreviousServicesTypeTow';
 
 import Icon from 'react-native-vector-icons/Entypo';
@@ -213,7 +213,7 @@ export default class MainNavigator extends Component {
         EditProfile.navigationOptions = (props) => TitleHeader(props, strings.EditProfile);
         VolunteerForm.navigationOptions = (props) => TitleHeader(props, strings.VolunteerForm);
         ContactUs.navigationOptions = (props) => TitleHeader(props, strings.contactUs);
-        // PreviousServicesTypeOne.navigationOptions = (props) => TitleHeader(props, strings.PreviousServices);
+        PreviousServicesTypeOne.navigationOptions = (props) => TitleHeader(props, strings.PreviousServices);
         PreviousServicesTypeTow.navigationOptions = (props) => TitleHeader(props, strings.PreviousServices);
 
         SplashScreen.navigationOptions = ({ navigation }) => {
@@ -259,7 +259,7 @@ export default class MainNavigator extends Component {
                 UserLoc: UserLoc,
                 ContactUs: ContactUs,
                 ContactUsSuccessMSG: ContactUsSuccessMSG,
-                // PreviousServicesTypeOne: PreviousServicesTypeOne,
+                PreviousServicesTypeOne: PreviousServicesTypeOne,
                 PreviousServicesTypeTow: PreviousServicesTypeTow,
             },
             {

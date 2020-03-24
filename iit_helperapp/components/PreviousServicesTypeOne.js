@@ -8,7 +8,7 @@ import { TextInput } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 
-export default class PreviousServicesTypeTow extends Component {
+export default class PreviousServicesTypeOne extends Component {
 
     constructor(props) {
         super(props);
@@ -16,45 +16,36 @@ export default class PreviousServicesTypeTow extends Component {
             isRTL: this.props.isRTL,
             showProgress: true,
             showHide: true,
-            // status: 1 Finished
-            // status: 2 Underway
-            // status: 3 Waiting
             data: [
                 {
                     id: 1,
                     description: '(تعليم عن بعد (الصف الرابع',
                     date: '24/3',
-                    status: 1
                 },
                 {
                     id: 1,
                     description: '(تعليم عن بعد (الرياضيات',
                     date: '25/3',
-                    status: 2
                 },
                 {
                     id: 1,
                     description: '(تعليم عن بعد (الرياضيات',
                     date: '26/3',
-                    status: 3
                 },
                 {
                     id: 1,
                     description: '(تعليم عن بعد (علوم',
                     date: '27/3',
-                    status: 1
                 },
                 {
                     id: 1,
                     description: '(تعليم عن بعد (علوم',
                     date: '28/3',
-                    status: 1
                 },
                 {
                     id: 1,
                     description: '(تعليم عن بعد (الجغرافيا',
                     date: '29/3',
-                    status: 1
                 },
             ],
         };
@@ -77,32 +68,9 @@ export default class PreviousServicesTypeTow extends Component {
                             <Text style={[styles.TextStyle, { color: '#1B1919', fontSize: 16, }]}>{val.description}</Text>
                         </View>
                     </View>
-                    <View style={{ flexDirection: "row", position: 'absolute', right: width * 0.28, top: 10 }}>
+                    <View style={{ flexDirection: "row", position: 'absolute', right: width * 0.03, top: 10 }}>
                         <Text style={[styles.TextStyle, { color: '#1B1919', fontSize: 14, alignSelf: 'center' }]}>{val.date}</Text>
                     </View>
-                    {val.status == 1 ?
-                        <View style={{ flexDirection: "row", position: 'absolute', right: width * 0.03, top: 10 }}>
-                            <Text style={[styles.TextStyle, { color: '#1B1919', fontSize: 14, alignSelf: 'center' }]}>
-                                {strings.HelpWasDone}
-                            </Text>
-                        </View>
-                        :
-                        <View style={{ flexDirection: "row", position: 'absolute', right: width * 0.015 }}>
-                            {val.status == 2 ?
-                                <Badge style={{ backgroundColor: '#BB0000', paddingTop: 3, width: width * 0.2 }}>
-                                    <Text style={[styles.TextStyle, { color: '#fff', fontSize: 14, alignSelf: 'center' }]}>
-                                        {strings.Underway}
-                                    </Text>
-                                </Badge>
-                                :
-                                <Badge style={{ backgroundColor: '#BB0000', paddingTop: 3, width: width * 0.2 }}>
-                                    <Text style={[styles.TextStyle, { color: '#fff', fontSize: 14, alignSelf: 'center' }]}>
-                                        {strings.Waiting}
-                                    </Text>
-                                </Badge>
-                            }
-                        </View>
-                    }
                 </View >
             })
         }
@@ -111,9 +79,9 @@ export default class PreviousServicesTypeTow extends Component {
             <Container>
                 <ScrollView>
                     <View style={{ flexDirection: "row", paddingTop: 35 }}>
-                        <Image style={{ marginLeft: 10, marginRight: 5, width: width * 0.08, height: width * 0.08, marginTop: -10 }} resizeMode={'contain'} source={require('./images/Person.png')} />
+                        <Image style={{ marginLeft: 10, marginRight: 5, width: width * 0.08, height: width * 0.08, marginTop: -10 }} resizeMode={'contain'} source={require('./images/Hand.png')} />
                         <View style={{ flexDirection: "row" }}>
-                            <Text style={{ fontSize: 14, color: '#201F1F', fontWeight: "bold" }}>{strings.ServicesINeededHelpWith}</Text>
+                            <Text style={{ fontSize: 14, color: '#201F1F', fontWeight: "bold" }}>{strings.ServicesIVolunteered}</Text>
                         </View>
                         <View style={{ marginHorizontal: 80 }}>
                             <TouchableOpacity onPress={(event) => this.showHide()}>
