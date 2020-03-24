@@ -38,7 +38,7 @@ export default class ConfirmationCode extends Component {
 
     }
     redirectPage() {
-        var redirectID = 'Home'
+        var redirectID = 'UserLoc'
         this.props.navigation.navigate(redirectID, {});
     }
     onchangeInput(num, val) {
@@ -131,7 +131,7 @@ export default class ConfirmationCode extends Component {
                 var id = this.state.info.userId.split('-')
                 this.storePushTokenUser(id[0])
                 this.activate()
-                // this.redirectPage()
+                this.redirectPage()
                 // alert('done')
 
 

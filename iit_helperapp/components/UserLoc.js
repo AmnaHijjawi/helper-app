@@ -159,7 +159,7 @@ async confirm(){
                 });
         
                 let res = await response.json();
-               
+                this.redirectPage()
         
             } catch (error) {
                 this.setState({ error: error });
