@@ -28,6 +28,8 @@ import UserLoc from './UserLoc';
 import VolunteerForm from './VolunteerForm';
 import ContactUs from './ContactUs';
 import ContactUsSuccessMSG from './ContactUsSuccessMSG';
+import Services from './Services';
+import NeedHelpForm from './NeedHelpForm';
 
 import Icon from 'react-native-vector-icons/Entypo';
 import IconMaterial from 'react-native-vector-icons/MaterialIcons';
@@ -200,7 +202,7 @@ export default class MainNavigator extends Component {
                 headerStyle: { elevation: 0, backgroundColor: '#BB0000' },
                 headerTitleStyle: {
                     color: '#fff',
-                    // fontSize:17
+                    fontFamily: strings.FontFamily,
                     fontWeight: 'bold',
                 },
             }
@@ -211,6 +213,8 @@ export default class MainNavigator extends Component {
         EditProfile.navigationOptions = (props) => TitleHeader(props, strings.EditProfile);
         VolunteerForm.navigationOptions = (props) => TitleHeader(props, strings.VolunteerForm);
         ContactUs.navigationOptions = (props) => TitleHeader(props, strings.contactUs);
+        Services.navigationOptions = (props) => TitleHeader(props, strings.Services);
+        NeedHelpForm.navigationOptions = (props) => TitleHeader(props, strings.NeedHelpForm);
 
         SplashScreen.navigationOptions = ({ navigation }) => {
             return {
@@ -244,6 +248,7 @@ export default class MainNavigator extends Component {
         const MainNavigatorNav = createStackNavigator(
 
             {
+
                 SplashScreen: SplashScreen,
                 Home: Home,
                 Login: Login,
@@ -251,10 +256,11 @@ export default class MainNavigator extends Component {
                 EditProfile: EditProfile,
                 UserLoc: UserLoc,
                 VolunteerForm: VolunteerForm,
-
+                Services:Services,
                 UserLoc: UserLoc,
                 ContactUs: ContactUs,
                 ContactUsSuccessMSG: ContactUsSuccessMSG,
+                NeedHelpForm:NeedHelpForm,
             },
             {
                 initialRouteName: 'SplashScreen',
