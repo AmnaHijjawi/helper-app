@@ -24,6 +24,7 @@ import Home from './Home';
 import Login from './Login';
 import ConfirmationCode from './ConfirmationCode';
 import EditProfile from './EditProfile';
+import UserLoc from './UserLoc';
 
 import Icon from 'react-native-vector-icons/Entypo';
 import IconMaterial from 'react-native-vector-icons/MaterialIcons';
@@ -231,6 +232,12 @@ export default class MainNavigator extends Component {
             };
         };
       
+        UserLoc.navigationOptions = ({ navigation }) => {
+            return {
+                headerShown: false,
+            };
+        };
+      
 
         const MainNavigatorNav = createStackNavigator(
 
@@ -240,7 +247,7 @@ export default class MainNavigator extends Component {
                 Login:Login,
                 ConfirmationCode:ConfirmationCode,
                 EditProfile: EditProfile,
-          
+                UserLoc:UserLoc,
             },
             {
                 initialRouteName: 'SplashScreen',

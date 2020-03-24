@@ -41,11 +41,13 @@ export default class Login extends Component {
         console.log("__ State__", this.state);
 
         let phoneError = validate('mobile', this.state.phone)
+        let nameError = validate('required', this.state.name)
 
         this.setState({
             phoneError: phoneError,
+            nameError:nameError
         })
-        if (!phoneError) {
+        if (!phoneError && !nameError) {
             this.setState({ showProgress: true })
             try {
                 let response = await fetch(config.DOMAIN + 'getData.php', {
@@ -60,24 +62,22 @@ export default class Login extends Component {
                 let res = await response.json();
                 this.setState({ showProgress: false })
                 console.log("__ res__", res);
-                if (res.error == 1) {
-                    this.setState({ errorLogin: true, errMsg: res.errorMsg });
-                } else {
+                // if (res.error == 1) {
+                //     this.setState({ errorLogin: true, errMsg: res.errorMsg });
+                // } else {
                     this.setState({ errorLogin: false, errMsg: '' });
 
 
-                    // await AsyncStorage.setItem('@Makdoos:userId', res.userId);
-                    // await AsyncStorage.setItem('@Makdoos:name', res.userName);
-                    // await AsyncStorage.setItem('@Makdoos:phone', res.phone);
-                    // await AsyncStorage.setItem('@Makdoos:email', res.email);
-                    this.redirectPage('ConfirmationCode', { info: res });
+                    // await AsyncStorage.setItem('@Helper:userId', res.userId);
+                    // await AsyncStorage.setItem('@Helper:name', res.userName);
+                    // await AsyncStorage.setItem('@Helper:phone', res.phone);
+                    // await AsyncStorage.setItem('@Helper:email', res.email);
+                    this.redirectPage('ConfirmationCode', { info: res.result });
 
 
-                }
+                // }
 
-                if (res.lgout == 1) {
-
-                }
+               
             } catch (error) {
                 this.setState({ error: error });
             }
@@ -114,16 +114,16 @@ export default class Login extends Component {
                             <Input style={{color:'#000000',  width:'70%'}}
                                 onChangeText={(text) => this.setState({ name: text })}
                                 returnKeyType={"next"}
-                                value={this.state.phone}
+                                value={this.state.name}
                                 blurOnSubmit={false}
                                 placeholder={strings.name}
                                 ref={(c) => this.phone = c}
-                                onBlur={() => { this.setState({nameError: validate('mobile', this.state.phone, this.state.isRTL) }); }}
+                                onBlur={() => { this.setState({nameError: validate('required', this.state.name, this.state.isRTL) }); }}
                             />
                         </View>
 
 
-                        {renderError(this.props.isRTL, this.state.phoneError)}
+                        {renderError(this.props.isRTL, this.state.nameError)}
 
                         <View style={{ flexDirection: 'row', borderColor: '#003F6D', borderBottomWidth: 1.5, }} >
                         <Icon name='phone' style={{alignSelf:"center"}} size={20} color='#BB0000' />
@@ -132,6 +132,8 @@ export default class Login extends Component {
                             <Input style={{color:'#000000',  width:'70%'}}
                                 onChangeText={(text) => this.setState({ phone: text })}
                                 returnKeyType={"next"}
+                                keyboardType='numeric'
+
                                 value={this.state.phone}
                                 blurOnSubmit={false}
                                 placeholder={strings.PhoneNumber}

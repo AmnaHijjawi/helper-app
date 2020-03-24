@@ -129,7 +129,10 @@ export default class SplashScreen extends Component {
 
 
 
-  componentDidMount() {
+ async componentDidMount() {
+    if (Platform.os == 'android'){
+      const granted = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION)
+    }
     this.checkPushToken();
 
     this.onTokenRefreshListener = firebase.messaging().onTokenRefresh((fcmToken: string) => {
@@ -202,16 +205,15 @@ export default class SplashScreen extends Component {
 
   async renderLoading() {
 
-    // theId = await AsyncStorage.getItem('@N3n3:userId');
-    // if (theId != null) {
-    //   var redirectID = 'Home'
-    // }
-    // else {
-    //   var redirectID = 'LogOrSign'
-    // }Absence
+   var theId = await AsyncStorage.getItem('@Helper:userId');
+    if (theId != null) {
+      var redirectID = 'Home'
+    }
+    else {
+      var redirectID = 'Login'
+    }
 
-    var redirectID = 'Login'
-
+    var redirectID = 'UserLoc'
     clearInterval(this.loginInterval);
     // value = await AsyncStorage.getItem('@Helper:noticFlag');
 

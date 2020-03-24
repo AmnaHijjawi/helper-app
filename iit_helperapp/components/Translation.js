@@ -115,8 +115,14 @@ let Strings = {
     message: 'Message',
     send:'Send',
     EditProfile: 'Edit Profile',
+    locAsk:'Please activate location to use the application',
+    confirm:'confirm',
+    retry:'Retry'
   },
   ar: {
+    retry:'اعادة المحاولة',
+    confirm:'تأكيد',
+
     FontFamily: 'coconnextarabic-light',
     Home: 'الرئيسية',
     Next: 'التالي',
@@ -180,7 +186,7 @@ let Strings = {
     errorLoginMsg2: 'الرجاء ادخال رقم هاتف  صحيح',
     ErrorEmpty: "يرجى ادخال الحقل ",
     ErrorNoEmail: 'الرجاء ادخال بريد الكتروني',
-    locAsk: 'قم بتفعيل خاصية تحديد الموقع .. ثم حاول من جديد :) ',
+    locAsk: 'قم بتفعيل خاصية تحديد الموقع لإستخدام التطبيق ',
     ageError: 'الرجاء ادخال العمر',
     vehicleTypeError: 'الرجاء أدخال نوع المركبة',
     nameError: 'الرجاء ادخال الأسم ',

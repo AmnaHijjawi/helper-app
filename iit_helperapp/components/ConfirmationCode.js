@@ -25,8 +25,8 @@ export default class ConfirmationCode extends Component {
             isRTL: this.props.isRTL,
             isFocused: 0,
             // code: 0,
-
-            info: props.navigation.getParam('info', { code: 0 }),
+            error:false,
+            info: props.navigation.getParam('info', { verify: 0 }),
             showProgress: true,
         };
         this.goToPage = this.goToPage.bind(this);
@@ -80,10 +80,10 @@ export default class ConfirmationCode extends Component {
         }
     }
     async storePushTokenUser(userEmail) {
-        const pushNotesVal = await AsyncStorage.getItem('@Makdoos:pushNotes');
+        const pushNotesVal = await AsyncStorage.getItem('@Helper:pushNotes');
 
         // if (pushNotesVal == '1') {
-        const deviceToken = await AsyncStorage.getItem('@Makdoos:deviceToken');
+        const deviceToken = await AsyncStorage.getItem('@Helper:deviceToken');
         // deviceToken = '159754a4e018a942677a4ce799dce95052286e88db66ec97ba0a004c1fe484ba';
         console.log(deviceToken)
         try {
@@ -102,7 +102,7 @@ export default class ConfirmationCode extends Component {
             if (response.status >= 200 && response.status < 300) {
                 if (res.result == '1') {
                     try {
-                        await AsyncStorage.setItem('@Makdoos:pushNotes', '2');
+                        await AsyncStorage.setItem('@Helper:pushNotes', '2');
                     } catch (error) {
                         this.setState({ error: error });
                     }
@@ -119,67 +119,62 @@ export default class ConfirmationCode extends Component {
         const codeByUser = this.state.c1 + this.state.c2 + this.state.c3 + this.state.c4
 
         console.log('entered code', codeByUser)
-        console.log(' code', this.state.info.code)
+        console.log(' code', this.state.info.verify)
         if (codeByUser != "") {
             console.log('here1')
-            if (codeByUser == this.state.info.code) {
-                var name = this.state.info.fname + ' ' + this.state.info.lname
-                await AsyncStorage.setItem('@Okulum:userId', this.state.info.userId);
-                await AsyncStorage.setItem('@Okulum:name', name);
-                await AsyncStorage.setItem('@Okulum:phone', this.state.info.phone);
-                await AsyncStorage.setItem('@Okulum:email', this.state.info.userEmail);
+            if (codeByUser == this.state.info.verify) {
+                // var name = this.state.info.fname + ' ' + this.state.info.lname
+                await AsyncStorage.setItem('@Helper:userId', this.state.info.userId);
+                await AsyncStorage.setItem('@Helper:name', this.state.info.name);
+                await AsyncStorage.setItem('@Helper:phone', this.state.info.phone);
+                // await AsyncStorage.setItem('@Helper:email', this.state.info.userEmail);
                 var id = this.state.info.userId.split('-')
                 this.storePushTokenUser(id[0])
-                this.redirectPage()
-
+                this.activate()
+                // this.redirectPage()
+                // alert('done')
 
 
             } else {
 
-                Alert.alert(
-                    strings.error,
-                    strings.inVaildCode,
-                    [
-                        { text: strings.done },
-                        { text: strings.cancel },
-
-                    ],
-                    { cancelable: true }
-                )
-
-                this.setState({ c1: '', c2: '', c3: '', c4: '' })
+             
+                this.setState({error:true, c1: '', c2: '', c3: '', c4: '' })
             }
         }
 
     }
     componentDidMount() {
     }
-    async Resend() {
+    async activate() {
         // this.setState({ showProgress: true })
-        // try {
-        //     let response = await fetch(config.DOMAIN + 'login.php', {
-        //         method: 'POST',
-        //         body: JSON.stringify({
-        //             type: 'regenerateCode',
-        //             userId: this.state.userId,
+        try {
+            let response = await fetch(config.DOMAIN + 'getData.php', {
+                method: 'POST',
+                body: JSON.stringify({
+                    type: 'verify', 
+                    userId: this.state.info.userId,
 
-        //         })
-        //     });
+                })
+            });
 
-        //     let res = await response.json();
-        //     console.log(res);
-        //     this.setState({ code: res.generatedCode })
+            let res = await response.json();
+           
 
-        //     this.setState({ showProgress: false })
-
-        // } catch (error) {
-        //     this.setState({ error: error });
-        // }
+        } catch (error) {
+            this.setState({ error: error });
+        }
     }
     render() {
         return (
             <Container>
                 <Content>
+                <View style={{ marginTop: height * 0.1 }}>
+                        <Image resizeMode='contain' style={{ alignSelf: 'center' }}
+                            source={require('./images/Login.png')}
+                        />
+
+                    </View>
+
                     <View style={{ marginTop: height * 0.08, alignItems: 'center' }}>
                         <Text style={[styles.TextStyle, { fontSize: 19, color: '#636363' }]}>
                             {strings.EnterConfirmationCode}
@@ -187,6 +182,10 @@ export default class ConfirmationCode extends Component {
                         <Text style={[styles.TextStyle, { fontSize: 16, color: '#636363' }]}>
                             {strings.ConfirmationCodeSentBySMS}
                         </Text>
+                        {this.state.error&&
+                        <Text style={[styles.TextStyle, { marginTop:20, fontSize: 16, color: 'red' }]}>
+                            {strings.inVaildCode}
+                        </Text>}
 
                     </View>
                     <Item style={{ borderColor: 'white', flexDirection: RTL ? 'row-reverse' : 'row', justifyContent: 'center', alignSelf: 'center', width: width * 0.66, marginTop: height * 0.065 }}>
@@ -235,6 +234,12 @@ export default class ConfirmationCode extends Component {
                             onBlur={() => { this.setState({ passwordError: validate('required', this.state.c4, this.state.isRTL), isFocused: '' }); }}
                         />
                     </Item>
+                    
+                    <TouchableOpacity style={[styles.TextStyle, {width:width*0.5,alignSelf:"center", borderRadius: 20, marginTop: height * 0.1, backgroundColor: '#BB0000', flexDirection: "row", justifyContent: 'center' }]} onPress={() => this.confirm()}>
+                        <Text style={[styles.TextStyle, { color: '#FFFFFF', fontSize: 19, alignItems: 'center', lineHeight: 32 }]}>{strings.send}</Text>
+                        {/* <IconMaterial style={{ color: '#FFFFFF', fontSize: 19, alignItems: 'center', lineHeight: 32, paddingHorizontal: 7 }} name={backBtn} size={23} /> */}
+                    </TouchableOpacity>
+
                 </Content>
             </Container>
         )
