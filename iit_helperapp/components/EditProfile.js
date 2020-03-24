@@ -167,7 +167,7 @@ export default class EditProfile extends Component {
                                 {this.state.phone}
                             </Text>
                         </View>
-                        {this.state.userData.features == 1 &&
+                        {this.state.userData.features == 2 &&
                             <View style={{ flexDirection: 'row', justifyContent: 'flex-start', marginTop: '3%' }}>
                                 <Text style={[styles.TextStyle, { color: '#545252', fontSize: 16, marginHorizontal: '5%' }]}>
                                     {strings.nationalNumber}
@@ -177,7 +177,7 @@ export default class EditProfile extends Component {
                                 </Text>
                             </View>
                         }
-                        {this.state.userData.features == 1 &&
+                        {this.state.userData.features == 2 &&
                             <View style={{ flexDirection: 'row', justifyContent: 'flex-start', marginTop: '3%' }}>
                                 <Text style={[styles.TextStyle, { color: '#545252', fontSize: 16, marginHorizontal: '5%' }]}>
                                     {strings.carNum}
