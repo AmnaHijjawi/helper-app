@@ -117,7 +117,9 @@ export default class Login extends Component {
                                 value={this.state.name}
                                 blurOnSubmit={false}
                                 placeholder={strings.name}
-                                ref={(c) => this.phone = c}
+                                onSubmitEditing={(event) => { this.phone._root.focus(); }}
+
+                                ref={(c) => this.name = c}
                                 onBlur={() => { this.setState({nameError: validate('required', this.state.name, this.state.isRTL) }); }}
                             />
                         </View>
@@ -131,8 +133,9 @@ export default class Login extends Component {
 
                             <Input style={{color:'#000000',  width:'70%'}}
                                 onChangeText={(text) => this.setState({ phone: text })}
-                                returnKeyType={"next"}
+                                returnKeyType={"go"}
                                 keyboardType='numeric'
+                                onSubmitEditing={(event) => { this.signInHandler() }}
 
                                 value={this.state.phone}
                                 blurOnSubmit={false}

@@ -106,6 +106,7 @@ export default class VolunteerForm extends Component {
             this.setState({ showProgress: true, suceessFlag: 0 });
 
             const userId = await AsyncStorage.getItem('@Helper:userId');
+            const name = await AsyncStorage.getItem('@Helper:name');
             let platNo = this.state.carNum2 + '-' + this.state.carNum1
 
             try {
@@ -114,7 +115,7 @@ export default class VolunteerForm extends Component {
                     body: JSON.stringify({
                         type: 'editUser',
                         userId: userId,
-                        name: this.state.fullName,
+                        name: this.state.fullName?this.state.fullName:name,
                         nationalId: this.state.nationalNumber,
                         platNo: platNo,
                         serviceType: this.state.volunteerType,
@@ -131,7 +132,7 @@ export default class VolunteerForm extends Component {
                 if (response.status >= 200 && response.status < 300) { 
                     this.setState({ showProgress: false });
                     this.clearData()
-                    this.goToPage('Home',{})
+                    this.goToPage('ContactUsSuccessMSG',{ page: 'Volunteer' })
 
                 } else {
 
@@ -228,7 +229,7 @@ export default class VolunteerForm extends Component {
                     </View>
                     {this.state.volunteerType == 2 &&
                         <View>
-                            <Input style={[styles.TextStyle,{ textAlign:"right", borderColor: '#C9C9C9', borderWidth: 1, height: width * 0.1, borderRadius: 4, marginTop: height * 0.02, backgroundColor: 'white', fontSize: 12, paddingLeft: 12 }]}
+                            <Input style={[styles.TextStyle,{ textAlign:"right", borderColor: '#C9C9C9', borderWidth: 1, height: width * 0.1, borderRadius: 4, marginTop: height * 0.02, backgroundColor: 'white', fontSize: 12, paddingLeft: 12,padding:0 }]}
                                 onChangeText={(text) => this.setState({ fullName: text })}
                                 returnKeyType={"next"}
                                 value={this.state.fullName}
@@ -243,7 +244,7 @@ export default class VolunteerForm extends Component {
                     }
                     {this.state.volunteerType == 2 &&
                         <View>
-                            <Input style={[styles.TextStyle,{textAlign:"right", borderColor: '#C9C9C9', borderWidth: 1, height: width * 0.1, borderRadius: 4, marginTop: height * 0.02, backgroundColor: 'white', fontSize: 12, paddingLeft: 12 }]}
+                            <Input style={[styles.TextStyle,{textAlign:"right", borderColor: '#C9C9C9', borderWidth: 1, height: width * 0.1, borderRadius: 4, marginTop: height * 0.02, backgroundColor: 'white', fontSize: 12, paddingLeft: 12,padding:0 }]}
                                 onChangeText={(text) => this.setState({ nationalNumber: text })}
                                 keyboardType='numeric'
                                 returnKeyType={"next"}
@@ -264,7 +265,7 @@ export default class VolunteerForm extends Component {
                                 <Text style={[styles.TextStyle]}>{strings.carNum}</Text>
                             </View>
                             <View style={{ width: '45%' }}>
-                                <Input style={[styles.TextStyle,{textAlign:"right", borderColor: '#C9C9C9', borderWidth: 1, height: width * 0.1, borderRadius: 4, marginTop: height * 0.02, backgroundColor: 'white' }]}
+                                <Input style={[styles.TextStyle,{ fontSize:12, textAlign:"right", borderColor: '#C9C9C9', borderWidth: 1, height: width * 0.1, borderRadius: 4, marginTop: height * 0.02, backgroundColor: 'white',padding:0 }]}
                                     onChangeText={(text) => this.setState({ carNum1: text })}
                                     returnKeyType={"next"}
                                     keyboardType='numeric'
@@ -278,7 +279,7 @@ export default class VolunteerForm extends Component {
                                 <Text style={{ textAlign: 'center' }}>-</Text>
                             </View>
                             <View style={{ width: '26%' }}>
-                                <Input style={[styles.TextStyle,{ textAlign:"right",borderColor: '#C9C9C9', borderWidth: 1, height: width * 0.1, borderRadius: 4, marginTop: height * 0.02, backgroundColor: 'white' }]}
+                                <Input style={[styles.TextStyle,{ textAlign:"right",borderColor: '#C9C9C9', borderWidth: 1, height: width * 0.1, borderRadius: 4, marginTop: height * 0.02, backgroundColor: 'white',padding:0,fontSize:12 }]}
                                     onChangeText={(text) => this.setState({ carNum2: text })}
                                     returnKeyType={"next"}
                                     keyboardType='numeric'

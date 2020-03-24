@@ -51,7 +51,7 @@ export default class WeekPlan extends Component {
     }
     redirectPage() {
         var redirectID = 'ContactUsSuccessMSG'
-        this.props.navigation.navigate(redirectID, {});
+        this.props.navigation.navigate(redirectID, { page: 'ContactUs' });
     }
     getData = async () => {
         try {

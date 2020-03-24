@@ -18,6 +18,7 @@ export default class SignUp extends Component {
         this.state = {
             isRTL: this.props.isRTL,
             showProgress: true,
+            type:0,
         };
         this.goToPage = this.goToPage.bind(this);
     }
@@ -43,6 +44,8 @@ export default class SignUp extends Component {
 
             let res = await response.json();
             //    if(res.result.features){
+                await AsyncStorage.setItem('@Helper:name',res.result.fname);
+                await AsyncStorage.setItem('@Helper:phone', res.result.phone);
             this.setState({ type: res.result.features })
             //    }
         } catch (error) {
@@ -51,35 +54,39 @@ export default class SignUp extends Component {
 
     }
     componentDidMount() {
+        this.props.navigation.addListener('willFocus', () => {
+            this.getData()
+
+        });
         this.getData()
     }
     render() {
         return (
             <Container>
                 <Content>
-                {(this.state.type == 0 || this.state.type == '') && <TouchableOpacity onPress={() => {
-                    this.goToPage('VolunteerForm', {})
-                }}
-                    style={{ justifyContent: "center", width: width, height: height * 0.43 }} >
-                    <Image style={{ alignSelf: 'center',height: height * 0.43}} resizeMode='cover' source={require('./images/volunteer.png')} />
-                </TouchableOpacity>
-                }
-                {this.state.type != 0 &&
-                    <TouchableOpacity onPress={() => {
-                        this.goToPage('Services', {})
+                    {(this.state.type == 0 || this.state.type == '') && <TouchableOpacity onPress={() => {
+                        this.goToPage('VolunteerForm', {})
                     }}
                         style={{ justifyContent: "center", width: width, height: height * 0.43 }} >
                         <Image style={{ alignSelf: 'center', height: height * 0.43 }} resizeMode='cover' source={require('./images/volunteer.png')} />
                     </TouchableOpacity>
-                }
-                <TouchableOpacity
-                    onPress={() => {
-                        this.goToPage('NeedHelpForm', {})
-                    }}
-                    style={{ flexDirection: 'column', justifyContent: "center", width: width, height: height * 0.4 }} >
-                    <Image resizeMode='center' style={{ alignSelf: 'center', height: height * 0.4 }} source={require('./images/needHelp.png')} />
+                    }
+                    {this.state.type != 0 &&
+                        <TouchableOpacity onPress={() => {
+                            this.goToPage('Services', {})
+                        }}
+                            style={{ justifyContent: "center", width: width, height: height * 0.43 }} >
+                            <Image style={{ alignSelf: 'center', height: height * 0.43 }} resizeMode='cover' source={require('./images/volunteer.png')} />
+                        </TouchableOpacity>
+                    }
+                    <TouchableOpacity
+                        onPress={() => {
+                            this.goToPage('NeedHelpForm', {})
+                        }}
+                        style={{ flexDirection: 'column', justifyContent: "center", width: width, height: height * 0.4 }} >
+                        <Image resizeMode='center' style={{ alignSelf: 'center', height: height * 0.4 }} source={require('./images/needHelp.png')} />
 
-                </TouchableOpacity>
+                    </TouchableOpacity>
                 </Content>
             </Container>
         )

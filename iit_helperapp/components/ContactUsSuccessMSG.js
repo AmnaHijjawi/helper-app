@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Content, Spinner, Input, Item, Form, Label, Row, Badge, Right } from 'native-base';
 import {
-    StyleSheet, TouchableOpacity, Button, Clipboard,
+    StyleSheet, TouchableOpacity, Button, BackHandler,
     ToastAndroid, TextInput, AlertIOS, Linking, Platform,
     I18nManager, AppRegistry, Dimensions, ScrollView, ImageBackground,
     View, Image, Text, Modal, TouchableHighlight, Alert
@@ -15,15 +15,25 @@ export default class ContactUsSuccessMSG extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            page: this.props.navigation.getParam('page', null),
         };
+        this.backBtn = this.backBtn.bind(this)
     }
     goToPage(page, param) {
 
         this.props.navigation.navigate(page, param)
     }
     componentDidMount() {
+        this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.backBtn);
     }
-
+    componentWillUnmount() {
+        this.backHandler.remove();
+    }
+    backBtn() {
+        this.backHandler.remove();
+        this.props.navigation.navigate('Home')
+        return true;
+    }
     render() {
         return (
             <Container>
@@ -33,8 +43,12 @@ export default class ContactUsSuccessMSG extends Component {
                     />
                 </View>
                 <View style={{ top: height * 0.3, marginTop: 25 }}>
-                    <Text style={[styles.TextStyle, { alignSelf: 'center', fontSize: 20, color: '#717171' }]}>{strings.YourMessageHasBeenSent} ،</Text>
-                    <Text style={[styles.TextStyle, { alignSelf: 'center', fontSize: 20, color: '#717171', paddingHorizontal: 35, paddingTop:10, textAlign:"center" }]}>{strings.ContactUsMSGDescription} .</Text>
+                    <Text style={[styles.TextStyle, { alignSelf: 'center', fontSize: 20, color: '#717171' }]}>
+                        {this.state.page == 'Volunteer' ? strings.WaitForApproval + ' .' : this.state.page == 'NeedHelp' ? strings.YourRequestHasBeenSent + ' ،' : strings.YourMessageHasBeenSent + ' ،'}
+                    </Text>
+                    <Text style={[styles.TextStyle, { alignSelf: 'center', fontSize: 20, color: '#717171', paddingHorizontal: 35, paddingTop: 10, textAlign: "center" }]}>
+                        {this.state.page == 'NeedHelp' ? strings.YouWillBeAssistedByAlNashama + ' .' : this.state.page == 'ContactUs' ? strings.ContactUsMSGDescription + ' .' : ''}
+                    </Text>
                 </View>
                 <Content style={{ top: height * 0.3, marginTop: 20, marginHorizontal: '20%' }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'center' }}>

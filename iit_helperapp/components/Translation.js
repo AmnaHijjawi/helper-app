@@ -112,6 +112,11 @@ let Strings = {
     yes: 'Yes',
     No: 'No',
     Cancel: 'Cancel',
+    WaitForApproval: 'Wait For Approval',
+    YourRequestHasBeenSent: 'Your Request Has Been Sent',
+    YouWillBeAssistedByAlNashama: 'You Will Be Assisted By Al-Nashama',
+    PreviousVolunteers: 'Previous Volunteers',
+    
     Services:'Services close to you',
     TeachersContact: 'Contact The Teacher',
     startChat: 'Start Chat',
@@ -169,9 +174,13 @@ let Strings = {
     cancel : 'Cancel',
     selectdClassError : 'select class please',
     sentSuccesfully : 'Sent Succesfully',
-    helpNow : 'Help Now'
+    helpNow : 'Help Now',
+    serviceDescEduPlaceholder : 'select the subjects you need help on it',
+    NeedHelpForm:"I need help",
   },
   ar: {
+    NeedHelpForm:"احتاج الى مساعده",
+    serviceDescEduPlaceholder : 'حدد المواد التي تحتاج إلى مساعده بها',
     Services:'خدمات قريبه منك',
     VolunteerForm: 'أرغب بالتطوع',
     helpNow : 'المساعدة الآن',
@@ -311,12 +320,16 @@ let Strings = {
     yes: 'نعم',
     no: 'لا',
     Cancel: 'الغاء',
+    WaitForApproval: 'انتظر الموافقة الأمنية',
+    YourRequestHasBeenSent: 'تم ارسال طلبك',
+    YouWillBeAssistedByAlNashama: 'سيتم مساعدتك من قبل النشامى',
+    PreviousVolunteers: 'تطوعات سابقة',
 
     TeachersContact: 'تواصل مع المعلمين',
     startChat: 'إبدأ المحادثة',
     MyAccount: 'حسابي',
     Notification: 'الاشعارات',
-    contactUs: 'تواصل بنا',
+    contactUs: 'اتصل بنا',
     lang: 'English',
     share: 'شارك التطبيق',
     download: 'تنزيل',
@@ -350,7 +363,7 @@ let Strings = {
 
 
     selectServiceType: 'اختر مجال الخدمة التي تحتاج إلى مساعده بها',
-    serviceDescPlaceholder: 'صف الخدمة التي تريدها',
+    serviceDescPlaceholder: 'وصف الخدمة التي تريدها',
     needHelpFormNote: 'سيقوم النشامى المتطوعين بتقديم الخدمة لك مجاناً',
     firstGrade: 'الصف الأول',
     secondGrade: 'الصف الثاني',
