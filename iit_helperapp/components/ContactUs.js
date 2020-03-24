@@ -32,20 +32,20 @@ export default class WeekPlan extends Component {
         })
         if (!messageErr) {
 
-            // try {
-            //     let response = await fetch(config.DOMAIN + 'getData.php', {
-            //         method: 'POST',
-            //         body: JSON.stringify({
-            //             'type': 'contactUs',
-            //             'message': this.state.message,
-            //             'userId': this.state.userId,
-            //         })
-            //     });
-            //     let res = await response.json();
+            try {
+                let response = await fetch(config.DOMAIN + 'getData.php', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        'type': 'contactUs',
+                        'message': this.state.message,
+                        'userId': this.state.userId,
+                    })
+                });
+                let res = await response.json();
                 this.redirectPage();
-            // } catch (error) {
-            //     alert(error);
-            // }
+            } catch (error) {
+                alert(error);
+            }
         }
 
     }
