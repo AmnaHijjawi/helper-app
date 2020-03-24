@@ -27,21 +27,56 @@ export default class SignUp extends Component {
 
 
     }
+
+
+    async getData() {
+        var theId = await AsyncStorage.getItem('@Helper:userId');
+
+        try {
+            let response = await fetch(config.DOMAIN + 'getData.php', {
+                method: 'POST',
+                body: JSON.stringify({
+                    type: 'getUserInfo',
+                    userId: theId,
+                })
+            });
+
+            let res = await response.json();
+            //    if(res.result.features){
+            this.setState({ type: res.result.features })
+            //    }
+        } catch (error) {
+            this.setState({ error: error });
+        }
+
+    }
+    componentDidMount() {
+        this.getData()
+    }
     render() {
         return (
             <Container>
-                <TouchableOpacity onPress={()=>{
-                    this.goToPage('VolunteerForm',{})
+                {(this.state.type == 0 || this.state.type == '') && <TouchableOpacity onPress={() => {
+                    this.goToPage('VolunteerForm', {})
                 }}
-                 style={{ justifyContent:"center", width:width,height:height*0.47}} >
-                    <Image style={{alignSelf:'center'}} resizeMode='contain' source={require('./images/volunteer.png')} />
+                    style={{ justifyContent: "center", width: width, height: height * 0.47 }} >
+                    <Image style={{ alignSelf: 'center' }} resizeMode='contain' source={require('./images/volunteer.png')} />
                 </TouchableOpacity>
+                }
+                {this.state.type != 0 &&
+                    <TouchableOpacity onPress={() => {
+                        this.goToPage('Services', {})
+                    }}
+                        style={{ justifyContent: "center", width: width, height: height * 0.47 }} >
+                        <Image style={{ alignSelf: 'center' }} resizeMode='contain' source={require('./images/volunteer.png')} />
+                    </TouchableOpacity>
+                }
                 <TouchableOpacity
-                onPress={()=>{
-                    this.goToPage('NeedHelpForm',{})
-                }}
-                style={{ flexDirection:'column', justifyContent:"center",width:width,height:height*0.47}} >
-                <Image resizeMode='contain' style={{alignSelf:'center'}}  source={require('./images/needHelp.png')} />
+                    onPress={() => {
+                        this.goToPage('NeedHelpForm', {})
+                    }}
+                    style={{ flexDirection: 'column', justifyContent: "center", width: width, height: height * 0.47 }} >
+                    <Image resizeMode='contain' style={{ alignSelf: 'center' }} source={require('./images/needHelp.png')} />
 
                 </TouchableOpacity>
             </Container>

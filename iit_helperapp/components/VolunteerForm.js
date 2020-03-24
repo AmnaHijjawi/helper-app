@@ -131,6 +131,7 @@ export default class VolunteerForm extends Component {
                 if (response.status >= 200 && response.status < 300) { 
                     this.setState({ showProgress: false });
                     this.clearData()
+                    this.goToPage('Home',{})
 
                 } else {
 
@@ -310,7 +311,9 @@ export default class VolunteerForm extends Component {
                             <Text style={[styles.TextStyle, { color: '#FFFFFF', fontSize: 19, alignItems: 'center', lineHeight: 32 }]}>{strings.send}</Text>
                         </TouchableOpacity>
                     </View>
-
+                    <View style={{ marginBottom: 20 }}>
+                        <Text style={[styles.TextStyle, { color: 'green' }, { fontSize: 18 }, { textAlign: 'center' }]}>{this.state.suceessFlag ? strings.sentSuccesfully : ''}</Text>
+                    </View>
                 </Content>
             </Container>
         )
