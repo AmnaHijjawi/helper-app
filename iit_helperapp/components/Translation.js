@@ -2,7 +2,7 @@ import { AsyncStorage, InteractionManager, Platform } from 'react-native';
 let Strings = {
   "enUS": {
     lang: 'العربية',
-    FontFamily: 'coconnextarabic-light',
+    FontFamily: Platform.OS=='android'? 'coconnextarabic-light':'CoconÆ Next Arabic',
     Home: 'Home',
     Next: 'Next',
     Skip: 'Skip',
@@ -194,7 +194,7 @@ let Strings = {
     confirm: 'تأكيد',
 
 
-    FontFamily: 'coconnextarabic-light',
+    FontFamily: Platform.OS=='android'? 'coconnextarabic-light':'CoconÆ Next Arabic',
     Home: 'الرئيسية',
     Next: 'التالي',
     Skip: 'تخطي',
