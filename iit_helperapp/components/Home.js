@@ -36,7 +36,11 @@ export default class SignUp extends Component {
                  style={{ justifyContent:"center", width:width,height:height*0.47}} >
                     <Image style={{alignSelf:'center'}} resizeMode='contain' source={require('./images/volunteer.png')} />
                 </TouchableOpacity>
-                <TouchableOpacity style={{ flexDirection:'column', justifyContent:"center",width:width,height:height*0.47}} >
+                <TouchableOpacity
+                onPress={()=>{
+                    this.goToPage('NeedHelpForm',{})
+                }}
+                style={{ flexDirection:'column', justifyContent:"center",width:width,height:height*0.47}} >
                 <Image resizeMode='contain' style={{alignSelf:'center'}}  source={require('./images/needHelp.png')} />
 
                 </TouchableOpacity>

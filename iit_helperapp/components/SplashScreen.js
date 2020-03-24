@@ -5,6 +5,8 @@ import firebase from 'react-native-firebase';
 import type, { RemoteMessage, Notification, NotificationOpen } from 'react-native-firebase';
 var config = require('./Config.js')
 import AsyncStorage from '@react-native-community/async-storage';
+import RNRestart from 'react-native-restart'
+
 
 let pushNote;
 export default class SplashScreen extends Component {
@@ -220,7 +222,7 @@ export default class SplashScreen extends Component {
       }
       await AsyncStorage.setItem('@Helper:firstOpen', '1');
     }
-    // var redirectID = 'VolunteerForm'
+    // var redirectID = 'Services'
     clearInterval(this.loginInterval);
     // value = await AsyncStorage.getItem('@Helper:noticFlag');
 
