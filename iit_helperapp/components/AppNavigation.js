@@ -25,6 +25,8 @@ import Login from './Login';
 import ConfirmationCode from './ConfirmationCode';
 import EditProfile from './EditProfile';
 import UserLoc from './UserLoc';
+import ContactUs from './ContactUs';
+import ContactUsSuccessMSG from './ContactUsSuccessMSG';
 
 import Icon from 'react-native-vector-icons/Entypo';
 import IconMaterial from 'react-native-vector-icons/MaterialIcons';
@@ -112,7 +114,7 @@ export default class MainNavigator extends Component {
     // }
 
     render() {
-        
+
         backBtn = !IS_RTL ? 'arrow-forward' : 'arrow-back'
 
         backNav = this.backNav
@@ -214,13 +216,14 @@ export default class MainNavigator extends Component {
         Home.navigationOptions = (props) => TitleHeader(props, strings.Home);
         // Login.navigationOptions = (props) => TitleHeader(props, strings.Login);
         EditProfile.navigationOptions = (props) => TitleHeader(props, strings.EditProfile);
-    
+        ContactUs.navigationOptions = (props) => TitleHeader(props, strings.contactUs);
+
         SplashScreen.navigationOptions = ({ navigation }) => {
             return {
                 headerShown: false,
             };
         };
-      
+
         Login.navigationOptions = ({ navigation }) => {
             return {
                 headerShown: false,
@@ -231,23 +234,30 @@ export default class MainNavigator extends Component {
                 headerShown: false,
             };
         };
-      
+
         UserLoc.navigationOptions = ({ navigation }) => {
             return {
                 headerShown: false,
             };
         };
-      
+        ContactUsSuccessMSG.navigationOptions = ({ navigation }) => {
+            return {
+                headerShown: false,
+            };
+        };
+
 
         const MainNavigatorNav = createStackNavigator(
 
             {
                 SplashScreen: SplashScreen,
                 Home: Home,
-                Login:Login,
-                ConfirmationCode:ConfirmationCode,
+                Login: Login,
+                ConfirmationCode: ConfirmationCode,
                 EditProfile: EditProfile,
-                UserLoc:UserLoc,
+                UserLoc: UserLoc,
+                ContactUs: ContactUs,
+                ContactUsSuccessMSG: ContactUsSuccessMSG,
             },
             {
                 initialRouteName: 'SplashScreen',
@@ -257,24 +267,24 @@ export default class MainNavigator extends Component {
         const App = createAppContainer(MainNavigatorNav);
         return (
             <App ref={nav => { this.navigator = nav; }}
-                    onNavigationStateChange={async (prevState, currentState, action) => {
-                        this.currentRouteName = currentState.routes[currentState.index].routeName;
-                        this.page = null
-                        // this.userId = Math.random();
-                        this.userId = await AsyncStorage.getItem('@Helper:userId');
-                        if (currentState.routes[currentState.index].index != undefined && currentState.routes[currentState.index].index != null) {
-                            d = currentState.routes[currentState.index].index
+                onNavigationStateChange={async (prevState, currentState, action) => {
+                    this.currentRouteName = currentState.routes[currentState.index].routeName;
+                    this.page = null
+                    // this.userId = Math.random();
+                    this.userId = await AsyncStorage.getItem('@Helper:userId');
+                    if (currentState.routes[currentState.index].index != undefined && currentState.routes[currentState.index].index != null) {
+                        d = currentState.routes[currentState.index].index
 
-                            if (currentState.routes[currentState.index].routes[d].index != undefined && currentState.routes[currentState.index].routes[d].index != null) {
-                                d2 = currentState.routes[currentState.index].routes[d].index
-                                this.page = currentState.routes[currentState.index].routes[d].routes[d2].routeName
-                            }
+                        if (currentState.routes[currentState.index].routes[d].index != undefined && currentState.routes[currentState.index].routes[d].index != null) {
+                            d2 = currentState.routes[currentState.index].routes[d].index
+                            this.page = currentState.routes[currentState.index].routes[d].routes[d2].routeName
                         }
-                        if (action.type == "Navigation/BACK" && this.currentRouteName == 'SplashScreen') {
-                            BackHandler.exitApp()
-                        }
+                    }
+                    if (action.type == "Navigation/BACK" && this.currentRouteName == 'SplashScreen') {
+                        BackHandler.exitApp()
+                    }
 
-                    }} />
+                }} />
         )
     }
 }

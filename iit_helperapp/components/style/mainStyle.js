@@ -23,6 +23,13 @@ export default class MainStyle extends Component {
         fontFamily: strings.FontFamily,
       },
 
+      loginBTN: {
+        backgroundColor: '#BB0000',
+        borderRadius: 20,
+        width: width * 0.65,
+        height: 35,
+        textAlign: 'center',
+      },
       splashScreenStyle: {
         backgroundColor: '#BB0000',
         width: width,
@@ -41,7 +48,7 @@ export default class MainStyle extends Component {
         fontSize: 26,
       },
       circleFocus: {
-        backgroundColor:'#FDE7E8',
+        backgroundColor: '#FDE7E8',
         borderWidth: 1,
         borderColor: '#BB0000',
       },
@@ -61,11 +68,11 @@ export default class MainStyle extends Component {
         alignSelf: "center",
         width: width * 0.8,
         // height: height * 0.5,
-        overflow:'hidden',
+        overflow: 'hidden',
         backgroundColor: '#fff',
         borderRadius: 36,
         shadowColor: "#000",
-   
+
 
         elevation: 4,
       },
