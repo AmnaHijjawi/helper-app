@@ -156,12 +156,12 @@ export default class Services extends Component {
 
 
 
-<View>
+                            <View>
 
-{/* 
+                                {/* 
     //service data : name , description 
     //userInfo show it when iser accept the service  */}
-</View>
+                            </View>
                         </View>
                     </View>
                 </Modal>
