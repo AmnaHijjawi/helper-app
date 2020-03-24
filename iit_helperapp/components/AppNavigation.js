@@ -208,6 +208,11 @@ export default class MainNavigator extends Component {
                         <Text style={[styles.TextStyle,
                         { color: '#201F1F', fontSize: 17, marginLeft: 10, }]} >{strings.PreviousServices}</Text>
                     </TouchableOpacity>
+                    <TouchableOpacity onPress={() => { this.returnToPage('PreviousServicesTypeOne', {}) }} style={{ marginTop: height * 0.02, flexDirection: "row" }}>
+                        <IconAwesome5 style={{ color: '#D98080', fontSize: 20 }} name='hand-holding-heart' />
+                        <Text style={[styles.TextStyle,
+                        { color: '#201F1F', fontSize: 17, marginLeft: 10, }]} >{strings.PreviousVolunteers}</Text>
+                    </TouchableOpacity>
                     <TouchableOpacity onPress={() => { this.returnToPage('Services', {}) }} style={{ marginTop: height * 0.02, flexDirection: "row" }}>
                         <Image source={require('./images/last.png')} />
                         <Text style={[styles.TextStyle,
@@ -254,7 +259,7 @@ export default class MainNavigator extends Component {
         EditProfile.navigationOptions = (props) => TitleHeader(props, strings.MyAccount);
         VolunteerForm.navigationOptions = (props) => TitleHeader(props, strings.VolunteerForm);
         ContactUs.navigationOptions = (props) => TitleHeader(props, strings.contactUs);
-        PreviousServicesTypeOne.navigationOptions = (props) => TitleHeader(props, strings.PreviousServices);
+        PreviousServicesTypeOne.navigationOptions = (props) => TitleHeader(props, strings.PreviousVolunteers);
         PreviousServicesTypeTow.navigationOptions = (props) => TitleHeader(props, strings.PreviousServices);
         Services.navigationOptions = (props) => TitleHeader(props, strings.Services);
         NeedHelpForm.navigationOptions = (props) => TitleHeader(props, strings.NeedHelpForm);
