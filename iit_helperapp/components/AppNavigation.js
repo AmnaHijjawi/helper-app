@@ -25,6 +25,7 @@ import Login from './Login';
 import ConfirmationCode from './ConfirmationCode';
 import EditProfile from './EditProfile';
 import UserLoc from './UserLoc';
+import VolunteerForm from './VolunteerForm';
 
 import Icon from 'react-native-vector-icons/Entypo';
 import IconMaterial from 'react-native-vector-icons/MaterialIcons';
@@ -153,44 +154,36 @@ export default class MainNavigator extends Component {
 
         );
 
-        // var DrawerBox = ({ navigation }) => (
-        //     <View style={{ flex: 1 }}>
-        //         <Image source={require('./images/drawerLogo.png')} />
-        //         <View style={{ height: height * 0.05 }}>
-        //             <TouchableOpacity onPress={() => { this.returnToPage('Home', {}) }} style={{ marginTop: height * 0.02, flexDirection: "row" }}>
-        //                 <Image source={require('./images/homeOR.png')} />
-        //                 <Text style={[styles.TextStyle,
-        //                 { color: '#0566A5', fontSize: 17, marginLeft: 10, }]} >{strings.Home}</Text>
-        //             </TouchableOpacity>
-        //             <TouchableOpacity style={{ marginTop: height * 0.02, flexDirection: "row" }}>
-        //                 <Image source={require('./images/accountOR.png')} />
-        //                 <Text style={[styles.TextStyle,
-        //                 { color: '#0566A5', fontSize: 17, marginLeft: 10, }]} >{strings.MyAccount}</Text>
-        //             </TouchableOpacity>
-        //             <TouchableOpacity onPress={() => { this.returnToPage('Notification') }} style={{ marginTop: height * 0.02, flexDirection: "row" }}>
-        //                 <Image source={require('./images/notifications_icon.png')} />
-        //                 <Text style={[styles.TextStyle,
-        //                 { color: '#0566A5', fontSize: 17, marginLeft: 10, }]} >{strings.Notification}</Text>
-        //             </TouchableOpacity>
-        //             <TouchableOpacity onPress={() => { this.returnToPage('ContactUs', {}) }} style={{ marginTop: height * 0.02, flexDirection: "row" }}>
-        //                 <Image source={require('./images/contactUs.png')} />
-        //                 <Text style={[styles.TextStyle,
-        //                 { color: '#0566A5', fontSize: 17, marginLeft: 10, }]} >{strings.contactUs}</Text>
-        //             </TouchableOpacity>
-        //             <TouchableOpacity onPress={() => { this._onDirectionChange() }} style={{ marginTop: height * 0.02, flexDirection: "row" }}>
-        //                 <Image source={require('./images/lang.png')} />
-        //                 <Text style={[styles.TextStyle,
-        //                 { color: '#0566A5', fontSize: 17, marginLeft: 10, }]} >{strings.lang}</Text>
-        //             </TouchableOpacity>
-        //             <TouchableOpacity onPress={() => { this.shareProject('') }} style={{ marginTop: height * 0.02, flexDirection: "row" }}>
-        //                 <Image source={require('./images/share.png')} />
-        //                 <Text style={[styles.TextStyle,
-        //                 { color: '#0566A5', fontSize: 17, marginLeft: 10, }]} >{strings.share}</Text>
-        //             </TouchableOpacity>
-        //         </View>
-        //     </View>
+        var DrawerBox = ({ navigation }) => (
+            <View style={{ flex: 1 }}>
+                <Image source={require('./images/menu.png')} />
+                <View style={{ height: height * 0.05 }}>
+                    <TouchableOpacity onPress={() => { this.returnToPage('Home', {}) }} style={{ marginTop: height * 0.02, flexDirection: "row" }}>
+                        <Image source={require('./images/home.png')} />
+                        <Text style={[styles.TextStyle,
+                        { color: '#201F1F', fontSize: 17, marginLeft: 10, }]} >{strings.Home}</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={{ marginTop: height * 0.02, flexDirection: "row" }}>
+                        <Image source={require('./images/account.png')} />
+                        <Text style={[styles.TextStyle,
+                        { color: '#201F1F', fontSize: 17, marginLeft: 10, }]} >{strings.MyAccount}</Text>
+                    </TouchableOpacity>
+                
+                    <TouchableOpacity onPress={() => { this.returnToPage('ContactUs', {}) }} style={{ marginTop: height * 0.02, flexDirection: "row" }}>
+                        <Image source={require('./images/contactUs.png')} />
+                        <Text style={[styles.TextStyle,
+                        { color: '#201F1F', fontSize: 17, marginLeft: 10, }]} >{strings.contactUs}</Text>
+                    </TouchableOpacity>
+                 
+                    <TouchableOpacity onPress={() => { this.shareProject('') }} style={{ marginTop: height * 0.02, flexDirection: "row" }}>
+                        <Image source={require('./images/share.png')} />
+                        <Text style={[styles.TextStyle,
+                        { color: '#201F1F', fontSize: 17, marginLeft: 10, }]} >{strings.share}</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
 
-        // );
+        );
 
         let TitleHeader = (props, title) => {
             const { navigation } = props;
@@ -214,7 +207,8 @@ export default class MainNavigator extends Component {
         Home.navigationOptions = (props) => TitleHeader(props, strings.Home);
         // Login.navigationOptions = (props) => TitleHeader(props, strings.Login);
         EditProfile.navigationOptions = (props) => TitleHeader(props, strings.EditProfile);
-    
+        VolunteerForm.navigationOptions = (props) => TitleHeader(props, strings.VolunteerForm);
+
         SplashScreen.navigationOptions = ({ navigation }) => {
             return {
                 headerShown: false,
@@ -248,6 +242,8 @@ export default class MainNavigator extends Component {
                 ConfirmationCode:ConfirmationCode,
                 EditProfile: EditProfile,
                 UserLoc:UserLoc,
+                VolunteerForm:VolunteerForm,
+
             },
             {
                 initialRouteName: 'SplashScreen',
@@ -256,6 +252,12 @@ export default class MainNavigator extends Component {
         );
         const App = createAppContainer(MainNavigatorNav);
         return (
+            <Drawer primaryColor={'#fff'}
+            secondaryColor={'#424242'}
+            cancelColor={'#BB0000'}
+            sideMenu={<DrawerBox />}
+            //  sideMenu={this.renderSideMenu()}
+            ref="DRAWER">
             <App ref={nav => { this.navigator = nav; }}
                     onNavigationStateChange={async (prevState, currentState, action) => {
                         this.currentRouteName = currentState.routes[currentState.index].routeName;
@@ -275,6 +277,8 @@ export default class MainNavigator extends Component {
                         }
 
                     }} />
+                                </Drawer>
+
         )
     }
 }
