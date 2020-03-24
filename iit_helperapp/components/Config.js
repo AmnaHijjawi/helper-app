@@ -16,4 +16,4 @@ var _Environments = {
 };
 
 // var Environment = _Environments['PRODUCTION'];
-module.exports = _Environments['DEVELOPMENT'];
+module.exports = _Environments['PRODUCTION'];
