@@ -50,7 +50,7 @@ export default class MainNavigator extends Component {
         super(props);
         this.state = {
             isRTL: IS_RTL,
-            title: 'Helper'
+            // title: 'Helper'
         }
         this.openDrawer = this.openDrawer.bind(this)
 
@@ -199,7 +199,7 @@ export default class MainNavigator extends Component {
             const { navigation } = props;
             const { state, setParams } = navigation;
             const { params } = state;
-            title = title != '' && title != undefined ? title : this.state.title
+            // title = title != '' && title != undefined ? title : this.state.title
             this.nav = navigation
             return {
                 title: title,
@@ -208,8 +208,9 @@ export default class MainNavigator extends Component {
                 headerStyle: { elevation: 0, backgroundColor: '#BB0000' },
                 headerTitleStyle: {
                     color: '#fff',
+                    fontWeight: "200",
+
                     fontFamily: strings.FontFamily,
-                    fontWeight: 'bold',
                 },
             }
         };

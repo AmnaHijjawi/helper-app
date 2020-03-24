@@ -149,29 +149,7 @@ let Strings = {
     volunteerNote2Area: 'Write the service you will provide',
     carNumError: 'please enter car number',
     VolunteerForm: 'I want to volunteer',
-    retry: 'Retry'
-
-  },
-  ar: {
-    VolunteerForm: 'أرغب بالتطوع',
-
-    volunteerNoteArea: 'اذكر المواد التي ترغب بتدريسها',
-    requiredField: 'هذا الحقل مطلوب',
-    volunteerCheckboxLable: 'أوافق على تقديم الخدمة مجانا',
-    fullName: 'الاسم الرباعي',
-    fullNameError: 'الرجاء ادخال الاسم الرباعي',
-    nationalNumber: 'الرقم الوطني',
-    nationalNumberError: 'الرجاء ادخال الرقم الوطني',
-    selectVolunteerType: 'اختر مجال الخدمة التي ترغب التطوع بها',
-    onlineEducation: 'التعليم عن بعد',
-    otherServices: 'خدمات أخرى',
-    carNum: 'رقم السيارة',
-    volunteerFormNote: 'ملاحظة : نحتاج هذه المعلومات من أجل الحصول على تصريح من الجهات الرسمية',
-    volunteerNote2Area: 'اذكر الخدمات التي ستقدمها',
-    carNumError: 'الرجاء ادخال رقم السيارة',
-
-    retry: 'اعادة المحاولة',
-    confirm: 'تأكيد',
+    retry: 'Retry',
     selectServiceType: 'Choose the service area you need help with',
     serviceDescPlaceholder: 'Discribe the service you need',
     needHelpFormNote: 'The volunteer group [Nashama] will provide you with free service',
@@ -191,6 +169,28 @@ let Strings = {
     cancel : 'Cancel',
     selectdClassError : 'select class please',
     sentSuccesfully : 'Sent Succesfully',
+    helpNow : 'Help Now'
+  },
+  ar: {
+    VolunteerForm: 'أرغب بالتطوع',
+    helpNow : 'المساعدة الآن',
+    volunteerNoteArea: 'اذكر المواد التي ترغب بتدريسها',
+    requiredField: 'هذا الحقل مطلوب',
+    volunteerCheckboxLable: 'أوافق على تقديم الخدمة مجانا',
+    fullName: 'الاسم الرباعي',
+    fullNameError: 'الرجاء ادخال الاسم الرباعي',
+    nationalNumber: 'الرقم الوطني',
+    nationalNumberError: 'الرجاء ادخال الرقم الوطني',
+    selectVolunteerType: 'اختر مجال الخدمة التي ترغب التطوع بها',
+    onlineEducation: 'التعليم عن بعد',
+    otherServices: 'خدمات أخرى',
+    carNum: 'رقم السيارة',
+    volunteerFormNote: 'ملاحظة : نحتاج هذه المعلومات من أجل الحصول على تصريح من الجهات الرسمية',
+    volunteerNote2Area: 'اذكر الخدمات التي ستقدمها',
+    carNumError: 'الرجاء ادخال رقم السيارة',
+
+    retry: 'اعادة المحاولة',
+    confirm: 'تأكيد',
 
 
     FontFamily: 'coconnextarabic-light',
