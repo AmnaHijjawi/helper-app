@@ -115,6 +115,7 @@ let Strings = {
     WaitForApproval: 'Wait For Approval',
     YourRequestHasBeenSent: 'Your Request Has Been Sent',
     YouWillBeAssistedByAlNashama: 'You Will Be Assisted By Al-Nashama',
+    PreviousVolunteers: 'Previous Volunteers',
     
     TeachersContact: 'Contact The Teacher',
     startChat: 'Start Chat',
@@ -316,6 +317,7 @@ let Strings = {
     WaitForApproval: 'انتظر الموافقة الأمنية',
     YourRequestHasBeenSent: 'تم ارسال طلبك',
     YouWillBeAssistedByAlNashama: 'سيتم مساعدتك من قبل النشامى',
+    PreviousVolunteers: 'تطوعات سابقة',
 
     TeachersContact: 'تواصل مع المعلمين',
     startChat: 'إبدأ المحادثة',

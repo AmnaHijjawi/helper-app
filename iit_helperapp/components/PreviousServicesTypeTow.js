@@ -124,12 +124,12 @@ export default class PreviousServicesTypeTow extends Component {
         })
     }
     render() {
-        var component
+        var component = '';
         if (this.state.data.length > 0) {
 
             component = this.state.data.map((val, i) => {
                 if (val.id != undefined && val.id != null)
-                    return <View style={{ padding: 10, flexDirection: "row", backgroundColor: '#EEEEEE', paddingHorizontal: 13 }}>
+                    return <View style={{ padding: 10, flexDirection: "row", backgroundColor: '#EEEEEE', paddingHorizontal: 13, marginRight: 13, marginLeft: 13, marginBottom: height * 0.01 }}>
                         <View style={{ flexDirection: "row" }} >
                             <View>
                                 <Text style={[styles.TextStyle, { color: '#1B1919', fontSize: 16, }]}>{val.description}</Text>
@@ -226,25 +226,29 @@ export default class PreviousServicesTypeTow extends Component {
                     </View>
                 </Modal>
 
-                <ScrollView>
-                    <View style={{ flexDirection: "row", paddingTop: 35 }}>
-                        <Image style={{ marginLeft: 10, marginRight: 5, width: width * 0.08, height: width * 0.08, marginTop: -10 }} resizeMode={'contain'} source={require('./images/Person.png')} />
-                        <View style={{ flexDirection: "row" }}>
-                            <Text style={{ fontSize: 14, color: '#201F1F', fontWeight: "bold" }}>{strings.ServicesINeededHelpWith}</Text>
+                {component != '' ?
+                    <ScrollView>
+                        <View style={{ flexDirection: "row", paddingTop: 35 }}>
+                            <Image style={{ marginLeft: 10, marginRight: 5, width: width * 0.08, height: width * 0.08, marginTop: -10 }} resizeMode={'contain'} source={require('./images/Person.png')} />
+                            <View style={{ flexDirection: "row" }}>
+                                <Text style={{ fontSize: 14, color: '#201F1F', fontWeight: "bold" }}>{strings.ServicesINeededHelpWith}</Text>
+                            </View>
+                            <View style={{ marginHorizontal: 80 }}>
+                                <TouchableOpacity onPress={(event) => this.showHide()}>
+                                    <Badge style={{ backgroundColor: '#BB0000', width: 20, height: 20, marginTop: 2, paddingTop: 2.5, marginRight: 10, paddingRight: RTL & 3, paddingLeft: !RTL & 3 }}>
+                                        <Icon style={{ color: '#FFFFFF', fontSize: 16, alignSelf: 'center', fontWeight: 'bold' }} name={this.state.showHide ? 'up' : 'down'} />
+                                    </Badge>
+                                </TouchableOpacity>
+                            </View>
                         </View>
-                        <View style={{ marginHorizontal: 80 }}>
-                            <TouchableOpacity onPress={(event) => this.showHide()}>
-                                <Badge style={{ backgroundColor: '#BB0000', width: 20, height: 20, marginTop: 2, paddingTop: 2.5, marginRight: 10, paddingRight: RTL & 3, paddingLeft: !RTL & 3 }}>
-                                    <Icon style={{ color: '#FFFFFF', fontSize: 16, alignSelf: 'center', fontWeight: 'bold' }} name={this.state.showHide ? 'up' : 'down'} />
-                                </Badge>
-                            </TouchableOpacity>
+                        <View style={{ display: this.state.showHide ? 'flex' : 'none', marginTop: 15 }}>
+                            {component}
                         </View>
-                    </View>
-                    <View style={{ display: this.state.showHide ? 'flex' : 'none', marginTop: 7 }}>
-                        {component}
-                    </View>
 
-                </ScrollView>
+                    </ScrollView>
+                    :
+                    <Text style={[styles.TextStyle, { textAlign: 'center', color: '#1B1919', fontSize: 22, marginTop: height * 0.3 }]}>{'لا يوجد خدمات سابقة حاليا '}</Text>
+                }
             </Container>
         )
 
