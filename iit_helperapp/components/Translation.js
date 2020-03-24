@@ -112,6 +112,9 @@ let Strings = {
     yes: 'Yes',
     No: 'No',
     Cancel: 'Cancel',
+    WaitForApproval: 'Wait For Approval',
+    YourRequestHasBeenSent: 'Your Request Has Been Sent',
+    YouWillBeAssistedByAlNashama: 'You Will Be Assisted By Al-Nashama',
     
     TeachersContact: 'Contact The Teacher',
     startChat: 'Start Chat',
@@ -310,6 +313,9 @@ let Strings = {
     yes: 'نعم',
     no: 'لا',
     Cancel: 'الغاء',
+    WaitForApproval: 'انتظر الموافقة الأمنية',
+    YourRequestHasBeenSent: 'تم ارسال طلبك',
+    YouWillBeAssistedByAlNashama: 'سيتم مساعدتك من قبل النشامى',
 
     TeachersContact: 'تواصل مع المعلمين',
     startChat: 'إبدأ المحادثة',
