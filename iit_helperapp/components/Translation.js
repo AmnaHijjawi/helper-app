@@ -112,7 +112,7 @@ let Strings = {
     yes: 'Yes',
     No: 'No',
     Cancel: 'Cancel',
-    
+    Services:'Services close to you',
     TeachersContact: 'Contact The Teacher',
     startChat: 'Start Chat',
     MyAccount: 'My Account',
@@ -172,6 +172,7 @@ let Strings = {
     helpNow : 'Help Now'
   },
   ar: {
+    Services:'خدمات قريبه منك',
     VolunteerForm: 'أرغب بالتطوع',
     helpNow : 'المساعدة الآن',
     volunteerNoteArea: 'اذكر المواد التي ترغب بتدريسها',
