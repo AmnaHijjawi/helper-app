@@ -98,6 +98,11 @@ let Strings = {
     final: "Final",
     YourMessageHasBeenSent: 'Your Message Sas Been Sent',
     ContactUsMSGDescription: 'Your Message Will Be Reviewed Immediately And We Will Contact You When Needed',
+    PreviousServices : 'Previous Services',
+    ServicesINeededHelpWith: 'Services I Needed Help With',
+    HelpWasDone: 'Help Was Done',
+    Underway: 'Underway',
+    Waiting: 'Waiting',
     
     TeachersContact: 'Contact The Teacher',
     startChat: 'Start Chat',
@@ -228,6 +233,11 @@ let Strings = {
     final: "نهائي",
     YourMessageHasBeenSent: 'تم ارسال رسالتك',
     ContactUsMSGDescription: 'سيتم مراجعة رسالتك في الحال و التواصل بك عند الحاجة',
+    PreviousServices : 'خدمات سابقة',
+    ServicesINeededHelpWith: 'خدمات احتجت للمساعدة بها',
+    HelpWasDone: 'تمت المساعدة',
+    Underway: 'قيد التنفيذ',
+    Waiting: 'بالإنتظار',
 
     TeachersContact: 'تواصل مع المعلمين',
     startChat: 'إبدأ المحادثة',

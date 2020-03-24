@@ -27,6 +27,8 @@ import EditProfile from './EditProfile';
 import UserLoc from './UserLoc';
 import ContactUs from './ContactUs';
 import ContactUsSuccessMSG from './ContactUsSuccessMSG';
+// import PreviousServicesTypeOne from './PreviousServicesTypeOne';
+import PreviousServicesTypeTow from './PreviousServicesTypeTow';
 
 import Icon from 'react-native-vector-icons/Entypo';
 import IconMaterial from 'react-native-vector-icons/MaterialIcons';
@@ -217,6 +219,8 @@ export default class MainNavigator extends Component {
         // Login.navigationOptions = (props) => TitleHeader(props, strings.Login);
         EditProfile.navigationOptions = (props) => TitleHeader(props, strings.EditProfile);
         ContactUs.navigationOptions = (props) => TitleHeader(props, strings.contactUs);
+        // PreviousServicesTypeOne.navigationOptions = (props) => TitleHeader(props, strings.PreviousServices);
+        PreviousServicesTypeTow.navigationOptions = (props) => TitleHeader(props, strings.PreviousServices);
 
         SplashScreen.navigationOptions = ({ navigation }) => {
             return {
@@ -258,6 +262,8 @@ export default class MainNavigator extends Component {
                 UserLoc: UserLoc,
                 ContactUs: ContactUs,
                 ContactUsSuccessMSG: ContactUsSuccessMSG,
+                // PreviousServicesTypeOne: PreviousServicesTypeOne,
+                PreviousServicesTypeTow: PreviousServicesTypeTow,
             },
             {
                 initialRouteName: 'SplashScreen',
