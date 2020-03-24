@@ -212,8 +212,15 @@ export default class SplashScreen extends Component {
     else {
       var redirectID = 'Login'
     }
-
-    var redirectID = 'UserLoc'
+    var firstOpen = await AsyncStorage.getItem('@Helper:firstOpen');
+    if (firstOpen == null) {
+      if (!RTL) {
+        I18nManager.forceRTL(true);
+        RNRestart.Restart();
+      }
+      await AsyncStorage.setItem('@Helper:firstOpen', '1');
+    }
+    // var redirectID = 'VolunteerForm'
     clearInterval(this.loginInterval);
     // value = await AsyncStorage.getItem('@Helper:noticFlag');
 

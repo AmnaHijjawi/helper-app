@@ -52,16 +52,52 @@ export default class MainStyle extends Component {
         borderWidth: 1,
         borderColor: '#BB0000',
       },
+      volunteerTextAreaInput: {
+        fontSize: 15,
+        color: 'black',
+        padding: 10,
+        textAlign: 'right',
+        borderRadius: 4,
+        backgroundColor: 'white'
+      },
+      volunteerCheckboxLableStyle: {
+        paddingRight: 15,
+        color: '#707070'
+      },
+      volunteerActiveField: {
+        backgroundColor: '#FDEDED'
+      },
+
       errorMsg: {
+        fontFamily: strings.FontFamily,
+
         color: '#FFF',
         fontSize: 15,
         backgroundColor: '#CC0000',
         marginBottom: 10,
         textAlign: IS_RTL ? 'right' : 'left',
-        lineHeight: 30,
-        paddingBottom: 10,
-        paddingHorizontal: 10
+        padding: 4,
       },
+
+      loader: {
+        // position : 'absolute',
+        // top : 20,
+        ...StyleSheet.absoluteFillObject,
+        backgroundColor: 'rgba(0,0,0,0.7)',
+        width: 70,
+        height: 70,
+        paddingVertical: 10,
+        paddingHorizontal: 10,
+        borderRadius: 10,
+        left: '50%',
+        marginLeft: -35,
+        top: height * 0.36,
+        // top: 10,
+        bottom: 0,
+        marginTop: -35,
+        zIndex: 10,
+      },
+
       brancheBox: {
         // padding: 5,
         margin: 10,

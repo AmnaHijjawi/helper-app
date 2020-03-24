@@ -1,5 +1,5 @@
 import {
-I18nManager
+  I18nManager
 } from 'react-native';
 
 import strings from '../Translation.js';
@@ -10,34 +10,34 @@ Strings = IS_RTL ? strings.ar : strings.enUS
 module.exports = validation = {
   email: {
     presence: {
-      message: '^'+Strings.ErrorNoEmail
+      message: '^' + Strings.ErrorNoEmail
     },
     format: {
       pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-      message: '^'+Strings.ErrorWrongEmail
+      message: '^' + Strings.ErrorWrongEmail
     }
   },
 
   password: {
     presence: {
-      message: '^'+Strings.ErrorNoPassword
+      message: '^' + Strings.ErrorNoPassword
     },
     length: {
       minimum: 6,
-      message: '^'+Strings.ErrorWrongPassword
+      message: '^' + Strings.ErrorWrongPassword
     }
   },
 
   passwordUpdate: {
     length: {
       minimum: 6,
-      message: '^'+Strings.ErrorWrongPassword
+      message: '^' + Strings.ErrorWrongPassword
     }
   },
 
   decimalAmount: {
     presence: {
-      message: '^'+Strings.ErrorNoQty
+      message: '^' + Strings.ErrorNoQty
     },
     numericality: {
       greaterThan: 0,
@@ -46,61 +46,92 @@ module.exports = validation = {
 
   numberQty: {
     presence: {
-      message: '^'+Strings.ErrorNoQty
+      message: '^' + Strings.ErrorNoQty
     },
     numericality: {
       greaterThan: 0,
-      message: '^'+Strings.ErrorNoQty
+      message: '^' + Strings.ErrorNoQty
     }
   },
-  phoneNo:  {
+  phoneNo: {
     presence: {
       allowEmpty: false,
-      message: '^'+Strings.ErrorPhone
+      message: '^' + Strings.ErrorPhone
     },
   },
-  required:  {
+  required: {
     presence: {
       allowEmpty: false,
-      message: '^'+Strings.ErrorEmpty
-    },
-  },
-
-  fname:  {
-    presence: {
-      allowEmpty: false,
-      message: '^'+Strings.FnameError
-    },
-  },
- 
-
-  name:  {
-    presence: {
-      allowEmpty: false,
-      message: '^'+Strings.ErrorEmptyName
+      message: '^' + Strings.ErrorEmpty
     },
   },
 
-  lname:  {
+  fname: {
     presence: {
       allowEmpty: false,
-      message: '^'+Strings.LnameError
+      message: '^' + Strings.FnameError
     },
   },
 
-  mobile:  {
+
+  name: {
     presence: {
       allowEmpty: false,
-      message: '^'+Strings.ErrorPhone
+      message: '^' + Strings.ErrorEmptyName
+    },
+  },
+
+  lname: {
+    presence: {
+      allowEmpty: false,
+      message: '^' + Strings.LnameError
+    },
+  },
+
+  mobile: {
+    presence: {
+      allowEmpty: false,
+      message: '^' + Strings.ErrorPhone
     },
     format: {
       pattern: /([0-9]*)$|^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-      message: '^'+Strings.errorLoginMsg2
+      message: '^' + Strings.errorLoginMsg2
     },
     length: {
       minimum: 7,
-      message: '^'+Strings.errorLoginMsg2
+      message: '^' + Strings.errorLoginMsg2
     }
-    
+
+  },
+
+  volunteerNote: {
+    presence: {
+      allowEmpty: false,
+      message: '^' + Strings.requiredField
+    }
+  },
+  fullName: {
+    presence: {
+      allowEmpty: false,
+      message: '^' + Strings.fullNameError
+    },
+  },
+  nationalNumber: {
+    presence: {
+      allowEmpty: false,
+      message: '^' + Strings.nationalNumberError
+    },
+  },
+  carNum1: {
+    presence: {
+      allowEmpty: false,
+      message: '^' + Strings.carNumError
+    },
+  },
+  carNum2: {
+    presence: {
+      allowEmpty: false,
+      message: '^' + Strings.carNumError
+    },
   },
 };
