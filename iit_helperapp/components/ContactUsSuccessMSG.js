@@ -16,6 +16,7 @@ export default class ContactUsSuccessMSG extends Component {
         super(props);
         this.state = {
             page: this.props.navigation.getParam('page', null),
+            vType: this.props.navigation.getParam('vType', null),
         };
         this.backBtn = this.backBtn.bind(this)
     }
@@ -44,7 +45,7 @@ export default class ContactUsSuccessMSG extends Component {
                 </View>
                 <View style={{ top: height * 0.3, marginTop: 25 }}>
                     <Text style={[styles.TextStyle, { alignSelf: 'center', fontSize: 20, color: '#717171' }]}>
-                        {this.state.page == 'Volunteer' ? strings.WaitForApproval + ' .' : this.state.page == 'NeedHelp' ? strings.YourRequestHasBeenSent + ' ،' : strings.YourMessageHasBeenSent + ' ،'}
+                        {(this.state.page == 'Volunteer'&& this.state.vType==2 )? strings.WaitForApproval + ' .' : this.state.page == 'NeedHelp' ? strings.YourRequestHasBeenSent + ' ،' : strings.YourMessageHasBeenSent + '   '}
                     </Text>
                     <Text style={[styles.TextStyle, { alignSelf: 'center', fontSize: 20, color: '#717171', paddingHorizontal: 35, paddingTop: 10, textAlign: "center" }]}>
                         {this.state.page == 'NeedHelp' ? strings.YouWillBeAssistedByAlNashama + ' .' : this.state.page == 'ContactUs' ? strings.ContactUsMSGDescription + ' .' : ''}

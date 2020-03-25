@@ -185,14 +185,16 @@ export default class PreviousServicesTypeTow extends Component {
                     }}>
                     <View style={[styles.modalContainer1]}>
                         <View style={[styles.modalContainer2]}>
-                            <TouchableOpacity onPress={() => { this.openCloseModalWaiting() }} style={{ position: "absolute", left: 0, top: -20 }}>
+                            <TouchableOpacity onPress={() => { this.openCloseModalWaiting() }} 
+                            style={{overflow:'hidden',borderRadius:40, backgroundColor: "#fff",position: "absolute", padding: 10, left: 0, top: -20 }}
+                            >
                                 <Icon style={{ backgroundColor: "#fff", borderRadius: 40 }} name='closecircle' size={33} color='#BB0000' />
                             </TouchableOpacity>
                             <View>
-                                <Text style={[styles.TextStyle, { marginHorizontal: '20%', color: '#545252', fontSize: 16, alignItems: 'center' }]}>{strings.CancelOrderMSG}</Text>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 20 }}>
+                                <Text style={[styles.TextStyle, { textAlign:"center", marginHorizontal: '20%', color: '#545252', fontSize: 16, alignItems: 'center' }]}>{strings.CancelOrderMSG}</Text>
+                                <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 20 }}>
                                     <TouchableOpacity style={[styles.TextStyle, styles.confirmBTN, { marginRight: 40, flexDirection: "row", marginTop: '3%', justifyContent: 'center', width: width * 0.2, height: height * 0.035, paddingVertical: 3 }]} onPress={() => this.editUserData('Waiting')}>
-                                        <Text style={[styles.TextStyle, { color: '#fff', fontSize: 12 }]}>{strings.confirm}</Text>
+                                        <Text style={[styles.TextStyle, {textAlign:'center', color: '#fff', fontSize: 12 }]}>{strings.confirm}</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={[styles.TextStyle, styles.profileBTN, { marginLeft: 40, flexDirection: "row", marginTop: '3%', justifyContent: 'center', width: width * 0.2, height: height * 0.035, paddingVertical: 3 }]} onPress={() => this.openCloseModalWaiting()}>
                                         <Text style={[styles.TextStyle, { color: '#0D0D0D', fontSize: 12 }]}>{strings.Cancel}</Text>
@@ -212,11 +214,13 @@ export default class PreviousServicesTypeTow extends Component {
                     }}>
                     <View style={[styles.modalContainer1]}>
                         <View style={[styles.modalContainer2]}>
-                            <TouchableOpacity onPress={() => { this.openCloseModalUnderWay() }} style={{ position: "absolute", left: 0, top: -20 }}>
+                            <TouchableOpacity onPress={() => { this.openCloseModalUnderWay() }} 
+                            style={{overflow:'hidden',borderRadius:40, backgroundColor: "#fff",position: "absolute", padding: 10, left: 0, top: -20 }}
+                            >
                                 <Icon style={{ backgroundColor: "#fff", borderRadius: 40 }} name='closecircle' size={33} color='#BB0000' />
                             </TouchableOpacity>
                             <View>
-                                <Text style={[styles.TextStyle, { marginHorizontal: '20%', color: '#545252', fontSize: 16, alignItems: 'center' }]}>{strings.ServiceConfirmMSG}</Text>
+                                <Text style={[styles.TextStyle, {textAlign:"center", marginHorizontal: '20%', color: '#545252', fontSize: 16, alignItems: 'center' }]}>{strings.ServiceConfirmMSG}</Text>
                                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 20 }}>
                                     <TouchableOpacity style={[styles.TextStyle, styles.confirmBTN, { marginRight: 40, flexDirection: "row", marginTop: '3%', justifyContent: 'center', width: width * 0.2, height: height * 0.035, paddingVertical: 3 }]} onPress={() => this.editUserData('UnderWay')}>
                                         <Text style={[styles.TextStyle, { color: '#fff', fontSize: 12 }]}>{strings.yes}</Text>

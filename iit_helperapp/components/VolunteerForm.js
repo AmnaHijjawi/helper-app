@@ -132,7 +132,7 @@ export default class VolunteerForm extends Component {
                 if (response.status >= 200 && response.status < 300) { 
                     this.setState({ showProgress: false });
                     this.clearData()
-                    this.goToPage('ContactUsSuccessMSG',{ page: 'Volunteer' })
+                    this.goToPage('ContactUsSuccessMSG',{ page: 'Volunteer' ,vType:this.state.volunteerType})
 
                 } else {
 
@@ -183,9 +183,9 @@ export default class VolunteerForm extends Component {
 
     render() {
         return (
-            <Container>
+            <Container style={{backgroundColor: '#F8F8F8'}} >
                 {this.renderLoading()}
-                <Content style={{ paddingLeft: 15, paddingRight: 15, backgroundColor: '#F8F8F8' }}>
+                <Content style={{ margin:15,  }}>
 
 
                     <View style={{ marginTop: height * 0.03, marginBottom: height * 0.03, backgroundColor: 'white', borderWidth: 1, borderRadius: 4, borderColor: '#C9C9C9' }}>
@@ -302,8 +302,8 @@ export default class VolunteerForm extends Component {
                     }
 
                     <View style={{ flexDirection: "row", marginTop: height * 0.02 }}>
-                        <CheckBox checked={(this.state.freeServiceAgree == 1) ? true : false} color='#BB0000' onPress={() => this.agreeFreeServiceAction()} style={{ left: 0 }} />
-                        <Text style={[styles.TextStyle,styles.volunteerCheckboxLableStyle]}>{strings.volunteerCheckboxLable}</Text>
+                        <CheckBox checked={(this.state.freeServiceAgree == 1) ? true : false} color='#BB0000' onPress={() => this.agreeFreeServiceAction()} style={{  left: 0 }} />
+                        <Text style={[styles.TextStyle,styles.volunteerCheckboxLableStyle,{marginLeft:6}]}>{strings.volunteerCheckboxLable}</Text>
                     </View>
                     {renderError(this.props.isRTL, this.state.freeServiceAgreeError)}
 

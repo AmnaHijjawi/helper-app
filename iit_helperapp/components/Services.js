@@ -280,8 +280,10 @@ export default class Services extends Component {
                         <View style={[styles.modalContainer2]}>
                             <TouchableOpacity onPress={() => {
                                 this.openCloseModal('')
-                            }} style={{ position: "absolute", padding: 10, left: 0, top: -20 }}>
-                                <Icon style={{ backgroundColor: "#fff", borderRadius: 40 }} name='closecircle' size={33} color='#BB0000' />
+                            }} 
+                            style={{overflow:'hidden',borderRadius:40, backgroundColor: "#fff",position: "absolute", padding: 10, left: 0, top: -20 }}
+                            >
+                                <Icon style={{  borderRadius: 40 }} name='closecircle' size={33} color='#BB0000' />
                             </TouchableOpacity>
 
 

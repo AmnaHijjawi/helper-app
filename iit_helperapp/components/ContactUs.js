@@ -137,8 +137,8 @@ export default class WeekPlan extends Component {
                                 onBlur={() => { this.setState({ messageErr: validate('msg', this.state.message, this.state.isRTL) }); }} />
                         </View>
                         {renderError(this.props.isRTL, this.state.messageErr)}
-                        <Button style={{ backgroundColor: '#BB0000', width: width * 0.8, height: 26, borderRadius: 20, marginTop: width * 0.1, justifyContent: 'center' }} onPress={() => this.ContactUsHandler()}>
-                            <Text style={{ color: '#FFFFFF', fontFamily: strings.ArabicFont, fontSize: 14, alignSelf: 'center' }}>{strings.send}</Text>
+                        <Button style={{ backgroundColor: '#BB0000', width: width * 0.8, height: 30, borderRadius: 20, marginTop: width * 0.1, justifyContent: 'center' }} onPress={() => this.ContactUsHandler()}>
+                            <Text style={[styles.TextStyle,{ color: '#FFFFFF',  fontSize: 14, alignSelf: 'center' }]}>{strings.send}</Text>
                         </Button>
 
                     </View>

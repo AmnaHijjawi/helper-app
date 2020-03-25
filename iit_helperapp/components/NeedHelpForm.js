@@ -168,10 +168,10 @@ export default class NeedHelpForm extends Component {
         ];
 
         return (
-            <Container>
+            <Container style={{ backgroundColor: '#F8F8F8' }}>
                 {this.renderLoading()}
 
-                <Content style={{ paddingLeft: 15, paddingRight: 15, backgroundColor: '#F8F8F8' }}>
+                <Content style={{ margin:15, backgroundColor: '#F8F8F8' }}>
 
 
                     <View style={{ marginTop: height * 0.03, marginBottom: height * 0.03, backgroundColor: 'white', borderWidth: 1, borderRadius: 4, borderColor: '#C9C9C9' }}>
@@ -210,7 +210,7 @@ export default class NeedHelpForm extends Component {
                                 cancelContainerStyle={{ backgroundColor: 'white' }}
                                 optionTextStyle={[styles.TextStyle,{textAlign:"center", color: 'black' }]}
                                 initValue={strings.class}
-                                supportedOrientations={['landscape']}
+                                // supportedOrientations={['landscape']}
                                 accessible={true}
                                 scrollViewAccessibilityLabel={'Scrollable options'}
                                 cancelButtonAccessibilityLabel={strings.cancel}

@@ -111,7 +111,7 @@ export default class Login extends Component {
                         {/* <Icon name='phone' style={{alignSelf:"center"}} size={20} color='#BB0000' /> */}
                         <Icon2 name='user' style={{alignSelf:"center"}} size={22} color='#BB0000' />
 
-                            <Input style={{color:'#000000',  width:'70%'}}
+                            <Input style={[styles.TextStyle, {textAlign:'right',color:'#000000',  width:'70%'}]}
                                 onChangeText={(text) => this.setState({ name: text })}
                                 returnKeyType={"next"}
                                 value={this.state.name}
@@ -131,7 +131,7 @@ export default class Login extends Component {
                         <Icon name='phone' style={{alignSelf:"center"}} size={20} color='#BB0000' />
                         {/* <Icon name='user' style={{alignSelf:"center"}} size={22} color='#BB0000' /> */}
 
-                            <Input style={{color:'#000000',  width:'70%'}}
+                        <Input style={[styles.TextStyle, {textAlign:'right', color:'#000000',  width:'70%'}]}
                                 onChangeText={(text) => this.setState({ phone: text })}
                                 returnKeyType={"go"}
                                 keyboardType='numeric'
