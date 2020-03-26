@@ -128,7 +128,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.iit_helperapp"
+        applicationId "com.iit_helperapp_nashmi"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
