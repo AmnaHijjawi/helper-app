@@ -1,4 +1,4 @@
-package com.iit_helperapp;
+package com.iit_helperapp_nashmi;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "iit_helperapp";
+    return "iit_helperapp_nashmi";
   }
 }
