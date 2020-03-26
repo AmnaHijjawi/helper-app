@@ -14,6 +14,7 @@ import {
     Keyboard, TouchableOpacity
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
+import Icon5 from 'react-native-vector-icons/AntDesign';
 
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -59,6 +60,9 @@ export default class MainNavigator extends Component {
     }
     openDrawer() {
         this.refs.DRAWER.open()
+    }
+    closeDrawer() {
+        this.refs.DRAWER.close()
     }
 
     shareProject(link) {
@@ -180,11 +184,11 @@ export default class MainNavigator extends Component {
 
 
         const IndexHeaderRight = ({ navigation, Headertitle, type }) => (
-            <TouchableOpacity style={{ flexDirection: "row", padding: 20 }}
+            <TouchableOpacity style={{ flexDirection: "row"},Platform.OS =='android'?{padding: 20 }:{paddingLeft:20}}
                 // onPress={() => this.menu()}
                 onPress={() => this.openDrawer(navigation)}
             >
-                <Icon size={22} color='#fff' name='menu' />
+                <IconMaterial size={22} color='#fff' name='menu' />
             </TouchableOpacity>
 
         );
@@ -229,6 +233,10 @@ export default class MainNavigator extends Component {
                         <Text style={[styles.TextStyle,
                         { color: '#201F1F', fontSize: 17, marginLeft: 10, }]} >{strings.share}</Text>
                     </TouchableOpacity>
+                    {Platform.OS === 'ios' && <TouchableOpacity onPress={() => this.closeDrawer()} style={{ borderRadius: width * 0.15, width: width * 0.15, height: width * 0.15, backgroundColor: '#BB0000', justifyContent: "center", alignItems: "center", alignSelf: 'center', marginTop: width * 0.2 }}>
+                    <Icon5 name="close" color='#fff' size={30} style={{ position: 'absolute', backgroundColor: '002C87', alignSelf: 'center' }} />
+
+                </TouchableOpacity>}
                 </View>
             </View>
 

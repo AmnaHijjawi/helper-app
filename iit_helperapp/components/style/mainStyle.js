@@ -19,6 +19,7 @@ export default class MainStyle extends Component {
 
       //// waheed 
       TextStyle: {
+        color:'#000000',
         textAlign: 'left',
         fontFamily: strings.FontFamily,
       },
