@@ -68,6 +68,7 @@ export default class UserLoc extends Component {
                 const currentLongitude = position.coords.longitude;
                 //getting the Longitude from the location json
                 const currentLatitude = position.coords.latitude;
+                // alert(currentLatitude)
                 //getting the Latitude from the location json
                 this.setState({
                     error: false,
@@ -95,13 +96,15 @@ export default class UserLoc extends Component {
             }
         );
     }
-
+	// <key>NSLocationAlwaysUsageDescription</key>
+	// <string>We need your location to send you the order and show you services that near you</string>
 
     componentDidMount() {
         this.checkLoc()
 
     }
     async getData() {
+        console.warn('jj')
         fetch("https://maps.googleapis.com/maps/api/geocode/json?language=ar&latlng=" + this.state.location.latitude + "," + this.state.location.longitude + "&key=AIzaSyDS3zDY54x0LOmE-CqTpigigRac6s0FnUw")
             // https://maps.googleapis.com/maps/api/geocode/json?latlng=21.543656,39.201650&key=AIzaSyAv73ZPwjhkG-Z7bWpue9YCz57sXrFWMMo&language=ar
             .then((response) => response.json())

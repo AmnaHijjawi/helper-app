@@ -68,7 +68,7 @@ export default class SignUp extends Component {
                         this.goToPage('VolunteerForm', {})
                     }}
                         style={{ justifyContent: "center", width: width, height: height * 0.43 }} >
-                        <Image style={{ alignSelf: 'center', height: height * 0.43 }} resizeMode='cover' source={require('./images/volunteer.png')} />
+                        <Image style={{ width: width,alignSelf: 'center', height: height * 0.43 }} resizeMode='cover' source={require('./images/volunteer.png')} />
                     </TouchableOpacity>
                     }
                     {this.state.type != 0 &&
@@ -76,7 +76,7 @@ export default class SignUp extends Component {
                             this.goToPage('Services', {})
                         }}
                             style={{ justifyContent: "center", width: width, height: height * 0.43 }} >
-                            <Image style={{ alignSelf: 'center', height: height * 0.43 }} resizeMode='cover' source={require('./images/volunteer.png')} />
+                            <Image style={{ width: width,alignSelf: 'center', height: height * 0.43 }} resizeMode='cover' source={require('./images/volunteer.png')} />
                         </TouchableOpacity>
                     }
                     <TouchableOpacity

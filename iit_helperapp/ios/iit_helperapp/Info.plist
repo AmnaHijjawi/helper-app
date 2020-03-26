@@ -37,10 +37,13 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>We need your location to send you the order and show you services that near you</string>
+  <key>NSLocationAlwaysUsageDescription</key>
+   <string>We need your location to send you the order and show you services that near you</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need your location to send you the order and show you services that near you</string>
+  
+ 
+  
 	<key>UIAppFonts</key>
 	<array>
 		<string>coconnextarabic-light.ttf</string>
