@@ -73,7 +73,8 @@ export default class SignUp extends Component {
                     }
                     {this.state.type != 0 && */}
                         <TouchableOpacity onPress={() => {
-                            this.goToPage('Services', {})
+                          this.state.type == 0 || this.state.type == ''?                         this.goToPage('VolunteerForm', {})
+                          :  this.goToPage('Services', {})
                         }}
                             style={{ justifyContent: "center", width: width, height: height * 0.43 }} >
 

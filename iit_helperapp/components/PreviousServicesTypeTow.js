@@ -255,7 +255,7 @@ export default class PreviousServicesTypeTow extends Component {
 
                     </ScrollView>
                     :
-                    <Text style={[styles.TextStyle, { textAlign: 'center', color: '#1B1919', fontSize: 22, marginTop: height * 0.3 }]}>{'لا يوجد خدمات سابقة حاليا '}</Text>
+                    <Text style={[styles.TextStyle, { textAlign: 'center', color: '#1B1919', fontSize: 22, marginTop: height * 0.3 }]}>{strings.emptyMsg}</Text>
                 }
             </Container>
         )

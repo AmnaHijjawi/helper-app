@@ -177,8 +177,10 @@ let Strings = {
     helpNow : 'Help Now',
     serviceDescEduPlaceholder : 'select the subjects you need help on it',
     NeedHelpForm:"I need help",
+    emptyMsg:"Currently there is no information"
   },
   ar: {
+    emptyMsg:'لا يوجد معلومات حاليا ',
     NeedHelpForm:"احتاج الى مساعده",
     serviceDescEduPlaceholder : 'حدد المواد التي تحتاج إلى مساعده بها',
     Services:'خدمات قريبه منك',

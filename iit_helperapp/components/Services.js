@@ -201,7 +201,7 @@ export default class Services extends Component {
                 </TouchableOpacity>
             })
         } else {
-            listComponent = <Text style={[styles.TextStyle, {textAlign:'center', color: '#1B1919', fontSize: 22, marginTop: height * 0.3 }]}>{'لا يوجد خدمات قريبة منك حاليا '}</Text>
+            listComponent = <Text style={[styles.TextStyle, {textAlign:'center', color: '#1B1919', fontSize: 22, marginTop: height * 0.3 }]}>{strings.emptyMsg}</Text>
 
         }
 

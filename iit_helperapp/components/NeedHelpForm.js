@@ -232,7 +232,7 @@ export default class NeedHelpForm extends Component {
 
                     {/* {this.state.helpType == 2 && */}
                         <View>
-                            <Textarea style={[styles.TextStyle, styles.volunteerTextAreaInput]}
+                            <Textarea style={[styles.TextStyle, styles.volunteerTextAreaInput,{textAlign:RTL?"right":'left',}]}
                                 rowSpan={6}
                                 bordered
                                 returnKeyType={"next"}
