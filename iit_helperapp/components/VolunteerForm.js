@@ -44,7 +44,7 @@ export default class VolunteerForm extends Component {
         this.goToPage = this.goToPage.bind(this);
     }
     goToPage(page, param) {
-
+console.warn(';;;;;;;;;;;;;;;;')
         this.props.navigation.navigate(page, param)
 
 
@@ -131,8 +131,9 @@ export default class VolunteerForm extends Component {
 
                 if (response.status >= 200 && response.status < 300) { 
                     this.setState({ showProgress: false });
+                    var vt=this.state.volunteerType
                     this.clearData()
-                    this.goToPage('ContactUsSuccessMSG',{ page: 'Volunteer' ,vType:this.state.volunteerType})
+                    this.goToPage('ContactUsSuccessMSG',{ page: 'Volunteer' ,vType:vt})
 
                 } else {
 

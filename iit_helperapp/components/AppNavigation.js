@@ -34,7 +34,7 @@ import PreviousServicesTypeTow from './PreviousServicesTypeTow';
 import Services from './Services';
 import NeedHelpForm from './NeedHelpForm';
 
-import Icon from 'react-native-vector-icons/Entypo';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import IconMaterial from 'react-native-vector-icons/MaterialIcons';
 import IconAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import RNRestart from 'react-native-restart'
@@ -42,7 +42,8 @@ import Drawer from 'react-native-circle-drawer'
 import Share, { ShareSheet } from 'react-native-share';
 
 var IS_RTL = I18nManager.isRTL;
-I18nManager.forceRTL(true);
+// I18nManager.forceRTL(true);
+var config = require('./Config.js')
 
 export const { width: width, height: height } = Dimensions.get('window');
 export default class MainNavigator extends Component {
@@ -99,6 +100,7 @@ export default class MainNavigator extends Component {
             } else {
                 this.link = res.result.ios
             }
+            console.warn
         } catch (error) {
             this.setState({ error: error });
         }
@@ -233,6 +235,13 @@ export default class MainNavigator extends Component {
                         <Text style={[styles.TextStyle,
                         { color: '#201F1F', fontSize: 17, marginLeft: 10, }]} >{strings.share}</Text>
                     </TouchableOpacity>
+                    <TouchableOpacity onPress={() => { this._onDirectionChange() }} style={{ marginTop: height * 0.02, flexDirection: "row" }}>
+                        {/* <Image source={require('./images/share.png')} /> */}
+                        <Icon style={{ color: '#D98080', fontSize: 20 }} name='language' />
+
+                        <Text style={[styles.TextStyle,
+                        { color: '#201F1F', fontSize: 17, marginLeft: 10, }]} >{strings.lang}</Text>
+                    </TouchableOpacity>
                     {Platform.OS === 'ios' && <TouchableOpacity onPress={() => this.closeDrawer()} style={{ borderRadius: width * 0.15, width: width * 0.15, height: width * 0.15, backgroundColor: '#BB0000', justifyContent: "center", alignItems: "center", alignSelf: 'center', marginTop: width * 0.2 }}>
                     <Icon5 name="close" color='#fff' size={30} style={{ position: 'absolute', backgroundColor: '002C87', alignSelf: 'center' }} />
 
@@ -338,7 +347,8 @@ export default class MainNavigator extends Component {
                         this.currentRouteName = currentState.routes[currentState.index].routeName;
                         this.page = null
                         // this.userId = Math.random();
-                        this.userId = await AsyncStorage.getItem('@Helper:userId');
+                        var theId
+                        this.userId=theId = await AsyncStorage.getItem('@Helper:userId');
                         if (currentState.routes[currentState.index].index != undefined && currentState.routes[currentState.index].index != null) {
                             d = currentState.routes[currentState.index].index
 
@@ -347,7 +357,8 @@ export default class MainNavigator extends Component {
                                 this.page = currentState.routes[currentState.index].routes[d].routes[d2].routeName
                             }
                         }
-                        if (action.type == "Navigation/BACK" && this.currentRouteName == 'SplashScreen') {
+                        
+                        if ((action.type == "Navigation/BACK" && this.currentRouteName == 'SplashScreen')|| (action.type == "Navigation/BACK" && this.currentRouteName == 'UserLoc' && theId != null)) {
                             BackHandler.exitApp()
                         }
 

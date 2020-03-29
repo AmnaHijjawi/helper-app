@@ -66,6 +66,7 @@ export default class EditProfile extends Component {
             let res = await response.json();
             this.setState({ showProgress: false });
             let userData = res.result;
+            console.log(res)
             if (userData.features == 1 || userData.features == 2) {
                 this.setState({
                     name: userData.fname,
