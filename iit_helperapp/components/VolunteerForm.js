@@ -44,7 +44,7 @@ export default class VolunteerForm extends Component {
         this.goToPage = this.goToPage.bind(this);
     }
     goToPage(page, param) {
-
+console.warn(';;;;;;;;;;;;;;;;')
         this.props.navigation.navigate(page, param)
 
 
@@ -131,8 +131,9 @@ export default class VolunteerForm extends Component {
 
                 if (response.status >= 200 && response.status < 300) { 
                     this.setState({ showProgress: false });
+                    var vt=this.state.volunteerType
                     this.clearData()
-                    this.goToPage('ContactUsSuccessMSG',{ page: 'Volunteer' ,vType:this.state.volunteerType})
+                    this.goToPage('ContactUsSuccessMSG',{ page: 'Volunteer' ,vType:vt})
 
                 } else {
 
@@ -215,7 +216,7 @@ export default class VolunteerForm extends Component {
                     {renderError(this.props.isRTL, this.state.volunteerTypeError)}
 
                     <View>
-                        <Textarea style={[styles.TextStyle, styles.volunteerTextAreaInput]}
+                        <Textarea style={[styles.TextStyle, styles.volunteerTextAreaInput,{textAlign:RTL?"right":'left',}]}
                             rowSpan={6}
                             bordered
                             returnKeyType={"next"}
@@ -229,7 +230,7 @@ export default class VolunteerForm extends Component {
                     </View>
                     {this.state.volunteerType == 2 &&
                         <View>
-                            <Input style={[styles.TextStyle,{ textAlign:"right", borderColor: '#C9C9C9', borderWidth: 1, height: width * 0.1, borderRadius: 4, marginTop: height * 0.02, backgroundColor: 'white', fontSize: 12, paddingLeft: 12,padding:0 }]}
+                            <Input style={[styles.TextStyle,{ textAlign:RTL?"right":'left', borderColor: '#C9C9C9', borderWidth: 1, height: width * 0.1, borderRadius: 4, marginTop: height * 0.02, backgroundColor: 'white', fontSize: 12, paddingLeft: 12,padding:0 }]}
                                 onChangeText={(text) => this.setState({ fullName: text })}
                                 returnKeyType={"next"}
                                 value={this.state.fullName}
@@ -244,7 +245,7 @@ export default class VolunteerForm extends Component {
                     }
                     {this.state.volunteerType == 2 &&
                         <View>
-                            <Input style={[styles.TextStyle,{textAlign:"right", borderColor: '#C9C9C9', borderWidth: 1, height: width * 0.1, borderRadius: 4, marginTop: height * 0.02, backgroundColor: 'white', fontSize: 12, paddingLeft: 12,padding:0 }]}
+                            <Input style={[styles.TextStyle,{textAlign:RTL?"right":'left', borderColor: '#C9C9C9', borderWidth: 1, height: width * 0.1, borderRadius: 4, marginTop: height * 0.02, backgroundColor: 'white', fontSize: 12, paddingLeft: 12,padding:0 }]}
                                 onChangeText={(text) => this.setState({ nationalNumber: text })}
                                 keyboardType='numeric'
                                 returnKeyType={"next"}
@@ -265,7 +266,7 @@ export default class VolunteerForm extends Component {
                                 <Text style={[styles.TextStyle]}>{strings.carNum}</Text>
                             </View>
                             <View style={{ width: '45%' }}>
-                                <Input style={[styles.TextStyle,{ fontSize:12, textAlign:"right", borderColor: '#C9C9C9', borderWidth: 1, height: width * 0.1, borderRadius: 4, marginTop: height * 0.02, backgroundColor: 'white',padding:0 }]}
+                                <Input style={[styles.TextStyle,{ fontSize:12, textAlign:RTL?"right":'left', borderColor: '#C9C9C9', borderWidth: 1, height: width * 0.1, borderRadius: 4, marginTop: height * 0.02, backgroundColor: 'white',padding:0 }]}
                                     onChangeText={(text) => this.setState({ carNum1: text })}
                                     returnKeyType={"next"}
                                     keyboardType='numeric'
@@ -279,7 +280,7 @@ export default class VolunteerForm extends Component {
                                 <Text style={{ textAlign: 'center' }}>-</Text>
                             </View>
                             <View style={{ width: '26%' }}>
-                                <Input style={[styles.TextStyle,{ textAlign:"right",borderColor: '#C9C9C9', borderWidth: 1, height: width * 0.1, borderRadius: 4, marginTop: height * 0.02, backgroundColor: 'white',padding:0,fontSize:12 }]}
+                                <Input style={[styles.TextStyle,{ textAlign:RTL?"right":'left',borderColor: '#C9C9C9', borderWidth: 1, height: width * 0.1, borderRadius: 4, marginTop: height * 0.02, backgroundColor: 'white',padding:0,fontSize:12 }]}
                                     onChangeText={(text) => this.setState({ carNum2: text })}
                                     returnKeyType={"next"}
                                     keyboardType='numeric'
